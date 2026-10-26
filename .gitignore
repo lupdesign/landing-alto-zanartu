@@ -1,0 +1,11 @@
+# Archivos del sistema
+.DS_Store
+
+# Documentos de trabajo e insumos internos que no son parte del sitio web
+*.rtf
+Mirador Quillay Real Estate Landing Page(1).png
+assets/COLORES.png
+fuentes/Work_Sans/static/
+media/carrusel/render_4.jpg
+media/carrusel/render_7.jpg
+media/carrusel/render_14.jpg

@@ -1,0 +1,4013 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alto Zañartu — Plusvalía y proyección en La Florida</title>
+
+  <!-- Google Fonts Fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400..700;1,400&family=Work+Sans:wght@400..700&display=swap">
+
+  <style>
+    /* Fuentes locales de marca */
+    @font-face {
+      font-family: 'Work Sans';
+      src: url('fuentes/Work_Sans/WorkSans-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('fuentes/Roboto condensada/Roboto_Condensed-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('fuentes/Roboto condensada/Roboto_Condensed-Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('fuentes/Roboto condensada/Roboto_Condensed-SemiBold.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('fuentes/Roboto condensada/Roboto_Condensed-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('fuentes/Roboto condensada/Roboto_Condensed-Italic.ttf') format('truetype');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    :root {
+      --brand-yellow: #E29E05;
+      --brand-yellow-hover: #e5b75c;
+      --brand-ink: #000000;
+      --brand-gray: #666666;
+      --brand-surface: #EFEFEF;
+      --brand-white: #FFFFFF;
+      --radius-pill: 999px;
+      --radius-card: 22px;
+      --radius-input: 12px;
+      interpolate-size: allow-keywords;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--brand-surface);
+      color: var(--brand-ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .section-copy,
+    .section-nav {
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    .section-title {
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    /* Hero a pantalla completa sin máscara ni margen exterior */
+    .hero-frame {
+      position: relative;
+      width: 100%;
+      min-height: 100dvh;
+      overflow: hidden;
+      background-color: var(--brand-surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      isolation: isolate;
+    }
+
+    /* Video a todo el ancho y alto de la pantalla */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Fade claro localizado únicamente detrás del texto izquierdo */
+    .hero-localized-fade {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          90% 110% at 0% 50%,
+          rgba(239, 239, 239, 0.95) 0%,
+          rgba(239, 239, 239, 0.85) 26%,
+          rgba(239, 239, 239, 0.42) 44%,
+          rgba(239, 239, 239, 0) 60%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(239, 239, 239, 0.78) 30%,
+          rgba(239, 239, 239, 0.22) 46%,
+          rgba(239, 239, 239, 0) 55%
+        );
+    }
+
+    /* Navegación fija y fina en la parte superior */
+    .section-nav {
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      pointer-events: none;
+      transition: padding 0.28s ease;
+    }
+
+    .section-nav.is-scrolled {
+      padding: 12px 48px;
+    }
+
+    .brand-logo-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--brand-ink);
+      pointer-events: auto;
+      block-size: 57px;
+    }
+
+    .brand-logo-full,
+    .brand-logo-isotipo {
+      display: block;
+      width: auto;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .brand-logo-full {
+      height: 57px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .brand-logo-isotipo {
+      position: absolute;
+      inset-inline-start: 0;
+      height: 57px;
+      opacity: 0;
+      transform: translateY(-4px) scale(0.92);
+      pointer-events: none;
+    }
+
+    .section-nav.is-scrolled .brand-logo-full {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.95);
+      pointer-events: none;
+    }
+
+    .section-nav.is-scrolled .brand-logo-isotipo {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .nav-links {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: padding 0.25s ease, background-color 0.25s ease;
+    }
+
+    .section-nav.is-scrolled .nav-links {
+      padding: 7px 18px;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brand-ink);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--brand-yellow);
+    }
+
+    /* Contenido principal: izquierda texto, derecha formulario simple y compacto */
+    .hero-main {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(320px, 1.15fr) minmax(300px, 380px);
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 96px 48px 56px;
+      flex: 1;
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-copy-block {
+      max-width: 580px;
+      color: var(--brand-ink);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brand-gray);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(2.35rem, 4.4vw, 4rem);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+      margin-bottom: 20px;
+    }
+
+    .section-title .title-brand {
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .hero-lead {
+      font-size: clamp(0.95rem, 1.1vw, 1.0625rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--brand-ink);
+      max-width: 50ch;
+    }
+
+    /* Formulario simple y ligero en el lado derecho para no tapar el video */
+    .hero-form-card {
+      width: 100%;
+      max-width: 380px;
+      justify-self: end;
+      background: rgba(255, 255, 255, 0.38);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: var(--radius-card);
+      padding: 22px;
+    }
+
+    .hero-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 10px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-field.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-field label {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--brand-ink);
+      letter-spacing: 0.01em;
+    }
+
+    .form-field input {
+      width: 100%;
+      padding: 9px 12px;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.84375rem;
+      color: var(--brand-ink);
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: var(--radius-input);
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .form-field input::placeholder {
+      color: var(--brand-gray);
+      opacity: 0.75;
+    }
+
+    .form-field input:focus-visible {
+      outline: 2px solid var(--brand-yellow);
+      outline-offset: 1px;
+      border-color: var(--brand-ink);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .form-field input:invalid:user-invalid {
+      border-color: #b91c1c;
+    }
+
+    /* Botón en el amarillo de la marca (#E29E05), sin iconos */
+    .hero-submit-btn {
+      grid-column: 1 / -1;
+      margin-top: 6px;
+      width: 100%;
+      background-color: #E29E05;
+      color: var(--brand-ink);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 13px 22px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero-submit-btn:hover {
+      background-color: var(--brand-yellow-hover);
+    }
+
+    .hero-submit-btn:focus-visible {
+      outline: 2px solid var(--brand-ink);
+      outline-offset: 2px;
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .hero-localized-fade {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(239, 239, 239, 0.92) 0%,
+            rgba(239, 239, 239, 0.78) 48%,
+            rgba(239, 239, 239, 0.35) 100%
+          );
+      }
+
+      .section-nav,
+      .section-nav.is-scrolled {
+        padding: 14px 24px;
+      }
+
+      .brand-logo-link {
+        block-size: 47px;
+      }
+
+      .brand-logo-full {
+        height: 36px;
+      }
+
+      .brand-logo-isotipo {
+        height: 47px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        padding: 7px 14px;
+      }
+
+      .nav-links li:not(:last-child) {
+        display: none;
+      }
+
+      .hero-main {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 84px 24px 36px;
+      }
+
+      .hero-copy-block {
+        max-width: 100%;
+        text-align: left;
+      }
+
+      .section-title {
+        font-size: clamp(1.95rem, 7.5vw, 2.75rem);
+        margin-bottom: 14px;
+      }
+
+      .hero-lead {
+        font-size: 0.9375rem;
+      }
+
+      .hero-form-card {
+        max-width: 100%;
+        justify-self: stretch;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================
+       SECCIÓN BENEFICIOS (¿Por qué invertir?)
+       ========================================== */
+    .benefits-section {
+      background-color: var(--brand-white);
+      color: var(--brand-ink);
+      padding-block: clamp(64px, 8vw, 108px);
+      padding-inline: 48px;
+    }
+
+    .benefits-container {
+      max-inline-size: 1344px;
+      margin-inline: auto;
+    }
+
+    .benefits-header {
+      margin-block-end: clamp(40px, 5vw, 56px);
+    }
+
+    .benefits-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      list-style: none;
+    }
+
+    .benefit-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-inline-end: 32px;
+    }
+
+    .benefit-item + .benefit-item {
+      border-inline-start: 1px solid rgba(0, 0, 0, 0.08);
+      padding-inline-start: 36px;
+    }
+
+    .benefit-item:last-child {
+      padding-inline-end: 0;
+    }
+
+    .benefit-icon-circle {
+      inline-size: 56px;
+      block-size: 56px;
+      border-radius: var(--radius-pill);
+      background-color: rgba(226, 158, 5, 0.18);
+      display: grid;
+      place-items: center;
+      margin-block-end: 22px;
+      color: var(--brand-ink);
+      flex-shrink: 0;
+    }
+
+    .benefit-icon-circle svg {
+      inline-size: 26px;
+      block-size: 26px;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .benefit-heading {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--brand-ink);
+      margin-block-end: 10px;
+    }
+
+    .benefit-text {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--brand-gray);
+      max-inline-size: 30ch;
+    }
+
+    @media (max-width: 1024px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 40px;
+      }
+
+      .benefit-item:nth-child(odd) {
+        border-inline-start: none;
+        padding-inline-start: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .benefits-section {
+        padding-inline: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+      }
+
+      .benefit-item,
+      .benefit-item + .benefit-item {
+        border-inline-start: none;
+        padding-inline: 0;
+      }
+
+      .benefit-item + .benefit-item {
+        border-block-start: 1px solid rgba(0, 0, 0, 0.08);
+        padding-block-start: 28px;
+      }
+
+      .benefit-text {
+        max-inline-size: 100%;
+      }
+    }
+
+    /* ==========================================
+       SECCIÓN DATOS DEL MERCADO (La Florida)
+       ========================================== */
+    .market-section {
+      background-color: var(--brand-surface);
+      color: var(--brand-ink);
+      padding-block: clamp(72px, 9vw, 120px);
+      padding-inline: 48px;
+    }
+
+    .market-container {
+      max-inline-size: 1344px;
+      margin-inline: auto;
+    }
+
+    .market-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+      gap: clamp(40px, 5vw, 76px);
+      align-items: center;
+    }
+
+    .market-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .market-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+      margin-block-end: 24px;
+    }
+
+    /* Punto 1 (ancho completo bajo el título) */
+    .market-lead-item {
+      padding-block-end: 28px;
+      margin-block-end: 32px;
+      border-block-end: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
+    .market-lead-item .market-item-title {
+      font-size: 1.125rem;
+      margin-block-end: 8px;
+    }
+
+    .market-lead-item .market-item-text {
+      font-size: 0.975rem;
+      max-inline-size: 60ch;
+    }
+
+    /* Grilla 2x2 para los siguientes 4 puntos (2 y 2) */
+    .market-points-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 36px;
+    }
+
+    .market-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .market-item-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--brand-ink);
+    }
+
+    .market-item-text {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--brand-gray);
+    }
+
+    /* Fotografía grande a la derecha */
+    .market-figure {
+      margin: 0;
+      border-radius: var(--radius-card);
+      overflow: clip;
+      aspect-ratio: 4 / 5;
+      inline-size: 100%;
+      min-block-size: 560px;
+      background-color: var(--brand-white);
+    }
+
+    .market-image {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    @media (max-width: 1024px) {
+      .market-layout {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .market-figure {
+        min-block-size: 460px;
+        max-block-size: 620px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .market-section {
+        padding-inline: 24px;
+      }
+
+      .market-points-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .market-figure {
+        min-block-size: 380px;
+      }
+    }
+
+    /* ==========================================
+       SECCIÓN PROYECTO Y TIPOLOGÍAS (Carrusel 2 en 2)
+       ========================================== */
+    .typologies-section {
+      background-color: var(--brand-white);
+      color: var(--brand-ink);
+      padding-block: clamp(72px, 9vw, 120px);
+      padding-inline: 48px;
+    }
+
+    .typologies-container {
+      max-inline-size: 1344px;
+      margin-inline: auto;
+    }
+
+    .typologies-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.88fr) minmax(0, 1.32fr);
+      gap: clamp(36px, 4.5vw, 64px);
+      align-items: stretch;
+    }
+
+    /* Columna izquierda inspirada en la referencia */
+    .typologies-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 24px;
+      padding-block: 4px;
+    }
+
+    /* Indicador numérico: solo la línea y los números 1 2 3 4 */
+    .typologies-step-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-block-end: 4px;
+    }
+
+    .step-line {
+      flex: 1;
+      block-size: 1px;
+      background-color: rgba(0, 0, 0, 0.14);
+    }
+
+    .step-numbers {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--brand-gray);
+    }
+
+    .step-numbers span {
+      transition: color 0.25s ease, font-weight 0.25s ease;
+    }
+
+    .step-numbers span.is-active {
+      color: var(--brand-ink);
+      font-weight: 700;
+    }
+
+    .typologies-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+    }
+
+    .typologies-intro {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--brand-gray);
+      max-inline-size: 48ch;
+    }
+
+    /* Lista de puntos descriptivos separados por líneas */
+    .typologies-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      inline-size: 100%;
+      border-block-start: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .typologies-features li {
+      padding-block: 11px;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: var(--brand-ink);
+      border-block-end: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    /* Fila inferior: Precio desde a la izquierda y Botón a la derecha (según referencia) */
+    .typologies-bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block-start: 8px;
+      inline-size: 100%;
+      flex-wrap: wrap;
+    }
+
+    .typologies-price-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .price-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--brand-ink);
+    }
+
+    .price-value {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(2.1rem, 3.2vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--brand-ink);
+      letter-spacing: -0.02em;
+    }
+
+    /* Botón limpio de marca (sin iconos, radio 999px, #E29E05, hover más claro) */
+    .typologies-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #E29E05;
+      color: var(--brand-ink);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 15px 34px;
+      border-radius: var(--radius-pill);
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .typologies-cta:hover {
+      background-color: var(--brand-yellow-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Columna derecha: Carrusel de 2 tarjetas por vista */
+    .typologies-carousel-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-inline-size: 0;
+    }
+
+    .typologies-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 24px) / 2);
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-block: 4px;
+    }
+
+    .typologies-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .typology-card {
+      scroll-snap-align: start;
+      position: relative;
+      background-color: var(--brand-surface);
+      border-radius: var(--radius-card);
+      padding: 28px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-block-size: 560px;
+      overflow: clip;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .typology-card:hover {
+      border-color: rgba(226, 158, 5, 0.55);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+    }
+
+    .typology-card-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .typology-card-title {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--brand-ink);
+    }
+
+    .typology-card-subtitle {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--brand-gray);
+    }
+
+    /* Contenedor de planta isométrica */
+    .typology-plan-box {
+      position: relative;
+      z-index: 2;
+      margin-block: 18px;
+      padding: 16px;
+      background-color: var(--brand-white);
+      border-radius: 16px;
+      aspect-ratio: 4 / 4.6;
+      display: grid;
+      place-items: center;
+      overflow: clip;
+    }
+
+    .typology-plan-img {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .typology-card:hover .typology-plan-img {
+      transform: scale(1.03);
+    }
+
+    /* Pie de tarjeta: Sup. Total y Sup. Útil en 2 columnas entre líneas horizontales */
+    .typology-card-footer {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding-block: 14px;
+      border-block-start: 1px solid rgba(0, 0, 0, 0.14);
+      border-block-end: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
+    .typology-spec-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .typology-spec-label {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--brand-gray);
+    }
+
+    .typology-spec-value {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(1.35rem, 1.9vw, 1.65rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--brand-ink);
+    }
+
+    /* Controles de flecha en la parte inferior derecha (amarillo principal y hover más claro) */
+    .typologies-controls {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .carousel-arrow-btn {
+      inline-size: 44px;
+      block-size: 44px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background-color: #E29E05;
+      color: var(--brand-ink);
+      display: inline-grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .carousel-arrow-btn:hover {
+      background-color: var(--brand-yellow-hover);
+      transform: translateY(-1px);
+    }
+
+    .carousel-arrow-btn:disabled {
+      background-color: #E29E05;
+      color: var(--brand-ink);
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .carousel-arrow-btn svg {
+      inline-size: 18px;
+      block-size: 18px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 1100px) {
+      .typologies-layout {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .typologies-info {
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .typologies-section {
+        padding-inline: 24px;
+      }
+
+      .typologies-track {
+        grid-auto-columns: 88%;
+        gap: 16px;
+      }
+
+      .typology-card {
+        min-block-size: 490px;
+        padding: 22px 20px;
+      }
+    }
+
+    /* ==========================================
+       SECCIÓN GALERÍA DE ESPACIOS (Espacios que rentan)
+       ========================================== */
+    .spaces-section {
+      background-color: var(--brand-surface);
+      color: var(--brand-ink);
+      padding-block: clamp(72px, 9vw, 120px);
+      overflow-x: clip;
+    }
+
+    .spaces-header-container {
+      max-inline-size: 1344px;
+      margin-inline: auto;
+      padding-inline: 48px;
+      margin-block-end: clamp(36px, 5vw, 56px);
+    }
+
+    .spaces-header-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+      gap: clamp(28px, 4vw, 64px);
+      align-items: start;
+    }
+
+    .spaces-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .spaces-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+    }
+
+    /* Texto dinámico del espacio activo */
+    .spaces-active-caption {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-block-size: 54px;
+    }
+
+    .spaces-active-name {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--brand-ink);
+      letter-spacing: 0.01em;
+    }
+
+    .spaces-active-desc {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--brand-gray);
+      max-inline-size: 52ch;
+    }
+
+    /* Lista derecha de espacios estilo referencia 1 */
+    .spaces-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      justify-self: end;
+    }
+
+    .spaces-nav-item {
+      background: none;
+      border: none;
+      padding: 4px 0;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--brand-gray);
+      cursor: pointer;
+      transition: color 0.25s ease, transform 0.25s ease, font-weight 0.25s ease;
+      text-align: right;
+    }
+
+    .spaces-nav-item:hover {
+      color: var(--brand-ink);
+    }
+
+    .spaces-nav-item.is-active {
+      color: var(--brand-ink);
+      font-weight: 600;
+      transform: translateX(-4px);
+    }
+
+    /* Escenario central con vista parcial (peek) a izquierda y derecha */
+    .spaces-stage-wrapper {
+      position: relative;
+      inline-size: 100%;
+      margin-block-end: 28px;
+    }
+
+    .spaces-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.2vw, 28px);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      /* Padding lateral para centrar la foto activa y dejar ver las de los lados */
+      padding-inline: max(24px, calc((100% - min(72vw, 980px)) / 2));
+      padding-block: 8px;
+    }
+
+    .spaces-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .spaces-slide {
+      flex: 0 0 min(72vw, 980px);
+      scroll-snap-align: center;
+      container-type: scroll-state;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .spaces-slide-card {
+      position: relative;
+      border-radius: var(--radius-card);
+      overflow: clip;
+      aspect-ratio: 16 / 9.6;
+      background-color: var(--brand-white);
+      opacity: 0.48;
+      scale: 0.94;
+      transition:
+        scale 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.45s ease,
+        box-shadow 0.45s ease;
+    }
+
+    .spaces-slide.is-snapped .spaces-slide-card {
+      opacity: 1;
+      scale: 1;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (container-type: scroll-state) {
+        @container scroll-state(snapped: x) {
+          .spaces-slide-card {
+            opacity: 1;
+            scale: 1;
+            box-shadow: 0 22px 48px rgba(0, 0, 0, 0.12);
+          }
+        }
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spaces-slide-card {
+        transition: none !important;
+        scale: 1 !important;
+      }
+    }
+
+    .spaces-slide-img {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Miniaturas debajo de la imagen (fuera de la imagen, estilo referencia 2) */
+    .spaces-thumbs-container {
+      max-inline-size: 1344px;
+      margin-inline: auto;
+      padding-inline: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .spaces-thumbs-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(10px, 1.4vw, 16px);
+      list-style: none;
+    }
+
+    .spaces-thumb-btn {
+      position: relative;
+      inline-size: clamp(68px, 7.5vw, 96px);
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-input);
+      overflow: clip;
+      border: 2px solid transparent;
+      padding: 0;
+      background-color: var(--brand-white);
+      cursor: pointer;
+      opacity: 0.58;
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .spaces-thumb-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .spaces-thumb-btn.is-active {
+      opacity: 1;
+      border-color: var(--brand-yellow);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .spaces-thumb-btn:focus-visible {
+      outline: 2px solid var(--brand-ink);
+      outline-offset: 2px;
+    }
+
+    .spaces-thumb-img {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Optimización Mobile */
+    @media (max-width: 768px) {
+      .spaces-header-container {
+        padding-inline: 24px;
+        margin-block-end: 24px;
+      }
+
+      .spaces-header-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .spaces-active-caption {
+        min-block-size: 48px;
+      }
+
+      .spaces-nav-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        justify-self: start;
+        gap: 6px 16px;
+      }
+
+      .spaces-nav-item {
+        font-size: 0.875rem;
+        text-align: left;
+      }
+
+      .spaces-nav-item.is-active {
+        transform: none;
+        text-decoration: underline;
+        text-decoration-color: var(--brand-yellow);
+        text-underline-offset: 5px;
+        text-decoration-thickness: 2px;
+      }
+
+      .spaces-stage-wrapper {
+        margin-block-end: 20px;
+      }
+
+      .spaces-track {
+        gap: 12px;
+        padding-inline: calc((100% - 82vw) / 2);
+      }
+
+      .spaces-slide {
+        flex: 0 0 82vw;
+      }
+
+      .spaces-slide-card {
+        aspect-ratio: 4 / 3;
+        scale: 0.95;
+      }
+
+      .spaces-thumbs-container {
+        padding-inline: 16px;
+      }
+
+      .spaces-thumbs-list {
+        inline-size: 100%;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .spaces-thumb-btn {
+        inline-size: calc((100% - 32px) / 5);
+        max-inline-size: 68px;
+        min-inline-size: 52px;
+        border-radius: 8px;
+      }
+    }
+
+    /* ==========================================================
+       SECCIÓN TERMINACIONES BOUTIQUE (2 COLUMNAS + ACORDEÓN EXCLUSIVO)
+       ========================================================== */
+    .finishes-section {
+      position: relative;
+      inline-size: 100%;
+      background-color: var(--brand-white);
+      color: var(--brand-ink);
+      padding-block: clamp(72px, 9vw, 128px);
+      padding-inline: clamp(20px, 5vw, 72px);
+      border-block-start: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .finishes-container {
+      max-inline-size: 1320px;
+      margin-inline: auto;
+    }
+
+    .finishes-layout {
+      display: grid;
+      grid-template-columns: minmax(340px, 0.95fr) minmax(400px, 1.05fr);
+      column-gap: clamp(36px, 5.5vw, 84px);
+      row-gap: 28px;
+      align-items: stretch;
+    }
+
+    /* Encabezado sobre la imagen (columna izquierda superior) */
+    .finishes-header {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .finishes-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+      margin-block-end: 14px;
+    }
+
+    .finishes-lead {
+      font-size: clamp(0.98rem, 1.12vw, 1.08rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--brand-gray);
+      margin: 0;
+    }
+
+    /* Columna izquierda inferior: Imagen del mismo alto que los detalles */
+    .finishes-figure {
+      grid-column: 1;
+      grid-row: 2;
+      position: relative;
+      margin: 0;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      background-color: var(--brand-surface);
+      block-size: 100%;
+      min-block-size: 100%;
+    }
+
+    .finishes-image {
+      position: absolute;
+      inset: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Columna derecha: Solo Detalle de terminaciones + Acordeón exclusivo */
+    .finishes-content {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .finishes-list-label {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(1.18rem, 1.45vw, 1.38rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brand-ink);
+      margin-block-end: 14px;
+    }
+
+    /* Acordeón separado por líneas */
+    .finishes-accordion {
+      border-block-start: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .finish-item {
+      border-block-end: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .finish-summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-block: 14px;
+      padding-inline: 4px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .finish-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .finish-summary:focus-visible {
+      outline: 2px solid var(--brand-yellow);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .finish-summary-main {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-inline-size: 0;
+    }
+
+    /* Icono del tamaño del círculo anterior (38px), amarillo principal #E29E05, sin círculo ni animación */
+    .finish-icon-box {
+      inline-size: 38px;
+      block-size: 38px;
+      color: var(--brand-yellow);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .finish-icon-box svg {
+      inline-size: 36px;
+      block-size: 36px;
+      stroke: var(--brand-yellow);
+      stroke-width: 1.65;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    /* Nombre de cada detalle en peso regular (400) */
+    .finish-name {
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(1.02rem, 1.18vw, 1.12rem);
+      font-weight: 400;
+      color: var(--brand-ink);
+    }
+
+    .finish-item[open] .finish-name::after {
+      content: ':';
+    }
+
+    /* Indicador direccional (+ en negro / − en gris claro) sin círculo contenedor */
+    .finish-indicator {
+      position: relative;
+      inline-size: 20px;
+      block-size: 20px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .finish-indicator::before,
+    .finish-indicator::after {
+      content: '';
+      position: absolute;
+      background-color: var(--brand-ink);
+      border-radius: 1.5px;
+    }
+
+    .finish-indicator::before {
+      inline-size: 13px;
+      block-size: 1.8px;
+    }
+
+    .finish-indicator::after {
+      inline-size: 1.8px;
+      block-size: 13px;
+    }
+
+    /* Cuando muestra − (ítem abierto/no activable para cerrar), el signo − se muestra en gris claro */
+    .finish-item[open] .finish-indicator::before {
+      background-color: #C2C2C2;
+    }
+
+    .finish-item[open] .finish-indicator::after {
+      display: none;
+    }
+
+    /* Animación suave del contenido usando ::details-content + interpolate-size: allow-keywords */
+    .finish-item::details-content {
+      display: block;
+      overflow: hidden;
+      block-size: 0;
+      opacity: 0;
+    }
+
+    .finish-item[open]::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .finish-item::details-content {
+        transition:
+          block-size 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.28s ease,
+          content-visibility 0.32s allow-discrete;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .finish-item::details-content {
+        transition: opacity 0.2s ease;
+      }
+      .finish-item[open]::details-content {
+        block-size: auto;
+      }
+    }
+
+    .finish-body {
+      padding-block: 0 16px;
+      padding-inline: 56px 16px;
+    }
+
+    .finish-desc {
+      font-size: 0.96rem;
+      font-weight: 400;
+      line-height: 1.58;
+      color: var(--brand-gray);
+    }
+
+    /* Responsivo Tablet / Mobile para Terminaciones */
+    @media (max-width: 980px) {
+      .finishes-layout {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+      }
+
+      .finishes-header {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .finishes-figure {
+        grid-column: 1;
+        grid-row: 2;
+        min-block-size: 0;
+        aspect-ratio: 4 / 4.4;
+        max-block-size: 520px;
+      }
+
+      .finishes-content {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .finishes-section {
+        padding-block: 56px;
+        padding-inline: 18px;
+      }
+
+      .finish-summary {
+        padding-block: 13px;
+      }
+
+      .finish-icon-box {
+        inline-size: 32px;
+        block-size: 32px;
+      }
+
+      .finish-icon-box svg {
+        inline-size: 30px;
+        block-size: 30px;
+      }
+
+      .finish-body {
+        padding-inline: 50px 8px;
+      }
+
+      .finishes-figure {
+        aspect-ratio: 4 / 4.6;
+      }
+    }
+
+    /* ==========================================================
+       SECCIÓN PROCESO DE COMPRA (Así de SIMPLE — 3 Columnas x 2 Filas)
+       ========================================================== */
+    .process-section {
+      position: relative;
+      inline-size: 100%;
+      background-color: var(--brand-surface);
+      color: var(--brand-ink);
+      padding-block: clamp(72px, 9vw, 128px);
+      padding-inline: clamp(20px, 5vw, 72px);
+      border-block-start: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .process-container {
+      max-inline-size: 1320px;
+      margin-inline: auto;
+    }
+
+    .process-header {
+      margin-block-end: clamp(44px, 6vw, 72px);
+    }
+
+    .process-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+    }
+
+    /* Grilla de 3 columnas x 2 filas con alineación de subgrid */
+    .process-grid {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: clamp(32px, 4.5vw, 64px);
+      row-gap: clamp(44px, 5.5vw, 68px);
+    }
+
+    .process-step {
+      display: grid;
+      grid-row: span 3;
+      grid-template-rows: auto auto 1fr;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .process-step:hover {
+        transform: translateY(-6px);
+      }
+    }
+
+    .process-number-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-block-end: 20px;
+      border-block-end: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
+    .process-number {
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(4.2rem, 6.8vw, 6.2rem);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--brand-ink);
+    }
+
+    .process-label {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--brand-gray);
+      padding-block-start: 18px;
+      margin-block-end: 10px;
+    }
+
+    .process-desc {
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(1.12rem, 1.42vw, 1.32rem);
+      font-weight: 400;
+      line-height: 1.42;
+      letter-spacing: -0.01em;
+      color: var(--brand-gray);
+      max-inline-size: 28ch;
+    }
+
+    @media (max-width: 960px) {
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 44px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .process-section {
+        padding-block: 56px;
+        padding-inline: 18px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+        row-gap: 36px;
+      }
+
+      .process-step {
+        grid-row: auto;
+        grid-template-rows: auto;
+      }
+
+      .process-desc {
+        max-inline-size: 100%;
+      }
+    }
+
+    /* ==========================================================
+       SECCIÓN PREGUNTAS FRECUENTES (Fondo claro del amarillo principal)
+       ========================================================== */
+    .faq-section {
+      position: relative;
+      inline-size: 100%;
+      /* Tono claro derivado del amarillo principal #E29E05 */
+      background-color: #FAF1DA;
+      color: var(--brand-ink);
+      padding-block: clamp(72px, 9vw, 128px);
+      padding-inline: clamp(20px, 5vw, 72px);
+      border-block-start: 1px solid rgba(226, 158, 5, 0.18);
+    }
+
+    .faq-container {
+      max-inline-size: 860px;
+      margin-inline: auto;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-block-end: clamp(36px, 5vw, 56px);
+    }
+
+    .faq-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-card {
+      background-color: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(226, 158, 5, 0.24);
+      border-radius: 16px;
+      transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .faq-card:hover {
+      background-color: rgba(255, 255, 255, 0.82);
+      border-color: rgba(226, 158, 5, 0.42);
+    }
+
+    .faq-card[open] {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-color: rgba(226, 158, 5, 0.55);
+      box-shadow: 0 12px 28px rgba(226, 158, 5, 0.08);
+    }
+
+    .faq-summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 26px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-summary:focus-visible {
+      outline: 2px solid var(--brand-yellow);
+      outline-offset: 2px;
+      border-radius: 16px;
+    }
+
+    .faq-question {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(1.08rem, 1.35vw, 1.24rem);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.01em;
+      color: var(--brand-ink);
+    }
+
+    /* Indicador direccional (+ / −) limpio a la derecha según referencia */
+    .faq-indicator {
+      position: relative;
+      inline-size: 18px;
+      block-size: 18px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .faq-indicator::before,
+    .faq-indicator::after {
+      content: '';
+      position: absolute;
+      background-color: var(--brand-ink);
+      border-radius: 1.5px;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .faq-indicator::before {
+      inline-size: 13px;
+      block-size: 1.8px;
+    }
+
+    .faq-indicator::after {
+      inline-size: 1.8px;
+      block-size: 13px;
+    }
+
+    .faq-card[open] .faq-indicator::after {
+      transform: rotate(90deg) scaleY(0);
+      opacity: 0;
+    }
+
+    /* Animación suave del contenido con ::details-content + interpolate-size */
+    .faq-card::details-content {
+      display: block;
+      overflow: hidden;
+      block-size: 0;
+      opacity: 0;
+    }
+
+    .faq-card[open]::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .faq-card::details-content {
+        transition:
+          block-size 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.25s ease,
+          content-visibility 0.3s allow-discrete;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .faq-card::details-content {
+        transition: opacity 0.2s ease;
+      }
+      .faq-card[open]::details-content {
+        block-size: auto;
+      }
+    }
+
+    .faq-body {
+      padding: 0 26px 22px;
+    }
+
+    .faq-answer {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 400;
+      line-height: 1.62;
+      color: var(--brand-gray);
+      max-inline-size: 68ch;
+    }
+
+    @media (max-width: 600px) {
+      .faq-section {
+        padding-block: 56px;
+        padding-inline: 18px;
+      }
+
+      .faq-summary {
+        padding: 18px 20px;
+      }
+
+      .faq-body {
+        padding: 0 20px 18px;
+      }
+    }
+
+    /* ==========================================================
+       SECCIÓN UBICACIÓN (Fondo blanco + Columna izq editorial + Mapa grande + 3 bloques abajo sin iconos)
+       ========================================================== */
+    .location-section {
+      position: relative;
+      inline-size: 100%;
+      background-color: var(--brand-white);
+      color: var(--brand-ink);
+      padding-block: clamp(72px, 9vw, 128px);
+      padding-inline: clamp(20px, 5vw, 72px);
+      border-block-start: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .location-container {
+      max-inline-size: 1380px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(48px, 6vw, 76px);
+    }
+
+    .location-layout {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.72fr) minmax(480px, 1.28fr);
+      gap: clamp(36px, 4.5vw, 68px);
+      align-items: stretch;
+    }
+
+    /* Columna izquierda estilo referencia 1: Título en 3 líneas arriba + Párrafo y botón abajo */
+    .location-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 40px;
+      padding-block: 8px;
+    }
+
+    .location-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+    }
+
+    .location-bottom-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .location-lead {
+      font-size: clamp(0.95rem, 1.08vw, 1.04rem);
+      font-weight: 400;
+      line-height: 1.64;
+      color: var(--brand-gray);
+      max-inline-size: 46ch;
+    }
+
+    /* Botón limpio de marca (sin iconos, radio 999px, #E29E05, hover #e5b75c) */
+    .location-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--brand-yellow);
+      color: var(--brand-ink);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 15px 34px;
+      border-radius: var(--radius-pill);
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .location-cta:hover {
+      background-color: var(--brand-yellow-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Columna derecha: Mapa más grande, directo sobre el fondo blanco sin contenedor ni máscara */
+    .location-map-image {
+      display: block;
+      inline-size: 100%;
+      block-size: auto;
+      object-fit: contain;
+      align-self: center;
+    }
+
+    /* Fila inferior de 3 bloques debajo del todo (estilo referencia 2, sin iconos) */
+    .location-bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(24px, 3.5vw, 48px);
+      padding-block-start: clamp(32px, 4vw, 44px);
+      border-block-start: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .location-highlight-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding-inline-end: 12px;
+    }
+
+    .location-highlight-item + .location-highlight-item {
+      border-inline-start: 1px solid rgba(0, 0, 0, 0.1);
+      padding-inline-start: clamp(20px, 2.8vw, 36px);
+    }
+
+    .location-highlight-title {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(1.45rem, 2.1vw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--brand-ink);
+    }
+
+    .location-highlight-text {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.56;
+      color: var(--brand-gray);
+      max-inline-size: 36ch;
+    }
+
+    @media (max-width: 1024px) {
+      .location-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .location-content {
+        gap: 24px;
+      }
+
+      .location-bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .location-highlight-item,
+      .location-highlight-item + .location-highlight-item {
+        border-inline-start: none;
+        padding-inline: 0;
+      }
+
+      .location-highlight-item + .location-highlight-item {
+        border-block-start: 1px solid rgba(0, 0, 0, 0.08);
+        padding-block-start: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .location-section {
+        padding-block: 56px;
+        padding-inline: 18px;
+      }
+    }
+
+    /* ==========================================================
+       SECCIÓN CTA FINAL (Imagen render_8 + Overlay negro + Título en amarillo principal)
+       ========================================================== */
+    .final-cta-section {
+      position: relative;
+      inline-size: 100%;
+      min-block-size: clamp(440px, 52vw, 600px);
+      display: grid;
+      place-items: center;
+      padding-block: clamp(80px, 10vw, 136px);
+      padding-inline: clamp(20px, 5vw, 72px);
+      overflow: clip;
+      isolation: isolate;
+      background-color: var(--brand-ink);
+    }
+
+    .final-cta-bg {
+      position: absolute;
+      inset: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+    }
+
+    .final-cta-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 0, 0, 0.56) 0%,
+          rgba(0, 0, 0, 0.72) 100%
+        );
+    }
+
+    .final-cta-container {
+      max-inline-size: 860px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .final-cta-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-yellow);
+      margin-block-end: 18px;
+      max-inline-size: 22ch;
+    }
+
+    .final-cta-lead {
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.92);
+      max-inline-size: 52ch;
+      margin-block-end: 32px;
+    }
+
+    /* Botón limpio de marca (#E29E05, hover #e5b75c, texto #000000, sin iconos) */
+    .final-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--brand-yellow);
+      color: var(--brand-ink);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 16px 38px;
+      border-radius: var(--radius-pill);
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .final-cta-btn:hover {
+      background-color: var(--brand-yellow-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================
+       SECCIÓN FOOTER (Fondo blanco + Logos + Contacto + ALTO ZAÑARTU gigante)
+       ========================================================== */
+    .site-footer {
+      position: relative;
+      inline-size: 100%;
+      background-color: var(--brand-white);
+      color: var(--brand-ink);
+      padding-block-start: clamp(56px, 7vw, 88px);
+      padding-block-end: clamp(28px, 4vw, 44px);
+      padding-inline: clamp(20px, 5vw, 72px);
+      border-block-start: 1px solid rgba(0, 0, 0, 0.08);
+      overflow-x: clip;
+    }
+
+    .footer-container {
+      max-inline-size: 1380px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Fila superior de información y logos estilo referencia */
+    .footer-info-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 1.25fr) minmax(180px, 0.75fr) minmax(260px, 1.15fr) auto;
+      gap: clamp(28px, 4vw, 56px);
+      align-items: start;
+      padding-block-end: clamp(44px, 6vw, 72px);
+      border-block-end: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .footer-col-label {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-gray);
+    }
+
+    /* Bloque de logos principales: Alto Zañartu | Constructora Vector */
+    .footer-brand-pair {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo-az {
+      block-size: 46px;
+      inline-size: auto;
+      display: block;
+    }
+
+    .footer-logo-divider {
+      inline-size: 1px;
+      block-size: 36px;
+      background-color: rgba(0, 0, 0, 0.18);
+      flex-shrink: 0;
+    }
+
+    .footer-logo-vector {
+      block-size: 36px;
+      inline-size: auto;
+      display: block;
+    }
+
+    /* Bloque Comercializa: OneKey justificado a la izquierda con su etiqueta */
+    .footer-logo-onekey {
+      block-size: 28px;
+      inline-size: auto;
+      display: block;
+      align-self: flex-start;
+      object-position: left center;
+    }
+
+    /* Bloque Contacto */
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--brand-gray);
+    }
+
+    .footer-contact-list strong {
+      font-weight: 600;
+      color: var(--brand-ink);
+    }
+
+    .footer-contact-list a {
+      color: var(--brand-gray);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contact-list a:hover {
+      color: var(--brand-yellow);
+    }
+
+    /* Enlace volver arriba */
+    .footer-back-top {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--brand-gray);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      justify-self: end;
+    }
+
+    .footer-back-top:hover {
+      color: var(--brand-ink);
+    }
+
+    /* Palabra gigante ALTO ZAÑARTU a todo el ancho como en la referencia */
+    .footer-wordmark-wrap {
+      container-type: inline-size;
+      inline-size: 100%;
+      padding-block: clamp(20px, 3vw, 36px) clamp(12px, 2vw, 24px);
+      overflow: hidden;
+    }
+
+    .footer-wordmark {
+      display: block;
+      inline-size: 100%;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 0.86;
+      letter-spacing: -0.03em;
+      text-align: center;
+      white-space: nowrap;
+      color: rgba(0, 0, 0, 0.1);
+      user-select: none;
+      /* Fallback con unidades de viewport */
+      font-size: clamp(3.6rem, 15.2vw, 13.5rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .footer-wordmark {
+        font-size: clamp(3.6rem, 16.2cqi, 14rem);
+      }
+    }
+
+    /* Barra inferior de Copyright */
+    .footer-bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-block-start: 18px;
+      border-block-start: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 0.82rem;
+      color: var(--brand-gray);
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 32px;
+      }
+
+      .footer-back-top {
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .final-cta-section {
+        padding-block: 64px;
+        padding-inline: 18px;
+      }
+
+      .site-footer {
+        padding-block: 48px 28px;
+        padding-inline: 18px;
+      }
+
+      .footer-info-grid {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+      }
+
+      .footer-wordmark {
+        font-size: clamp(2.8rem, 15.5vw, 5.5rem);
+      }
+
+      @supports (font-size: 1cqi) {
+        .footer-wordmark {
+          font-size: clamp(2.8rem, 16cqi, 5.5rem);
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navegación fija superior en la raíz del documento para estar siempre por encima de todas las secciones -->
+  <header id="siteHeader" class="section-nav">
+    <a href="#" class="brand-logo-link" aria-label="Alto Zañartu">
+      <img
+        src="assets/logos/logotipo.svg"
+        alt="Alto Zañartu"
+        class="brand-logo-full"
+      />
+      <img
+        src="assets/logos/ISOTIPO.svg"
+        alt="Alto Zañartu Isotipo"
+        class="brand-logo-isotipo"
+      />
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="nav-links">
+        <li><a href="#beneficios">El Proyecto</a></li>
+        <li><a href="#tipologias">Tipologías</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-frame" aria-label="Alto Zañartu — Oportunidad de inversión inmobiliaria">
+      <!-- Video a pantalla completa sin máscara -->
+      <video
+        id="heroVideo"
+        class="hero-video"
+        src="media/video%20hero.mp4"
+        poster="media/image%20living.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
+
+      <!-- Fade claro localizado detrás del bloque de texto izquierdo -->
+      <div class="hero-localized-fade" aria-hidden="true"></div>
+
+      <!-- Bloque principal: Izquierda texto, Derecha formulario compacto -->
+      <div class="hero-main section-copy">
+        <div class="hero-copy-block">
+          <span class="hero-eyebrow">Oportunidad de inversión inmobiliaria</span>
+          <h1 class="section-title">
+            <span class="title-brand">ALTO ZAÑARTU</span>
+            Plusvalía y proyección en La Florida
+          </h1>
+          <p class="hero-lead">
+            Departamentos 2D2B con alta demanda de arriendo, terminaciones boutique y gastos comunes mínimos. La Florida lidera el crecimiento inmobiliario de la RM. Invierte con el respaldo de Constructora Vector.
+          </p>
+        </div>
+
+        <aside id="contacto" class="hero-form-card" aria-label="Formulario de contacto">
+          <form class="hero-form" action="#" method="POST">
+            <div class="form-field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="given-name" required />
+            </div>
+
+            <div class="form-field">
+              <label for="apellido">Apellido</label>
+              <input type="text" id="apellido" name="apellido" autocomplete="family-name" required />
+            </div>
+
+            <div class="form-field">
+              <label for="rut">RUT</label>
+              <input type="text" id="rut" name="rut" placeholder="12.345.678-9" required />
+            </div>
+
+            <div class="form-field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="+56 9" required />
+            </div>
+
+            <div class="form-field full-width">
+              <label for="correo">Correo</label>
+              <input type="email" id="correo" name="correo" autocomplete="email" required />
+            </div>
+
+            <div class="form-field full-width">
+              <label for="renta">Renta líquida mensual</label>
+              <input type="text" id="renta" name="renta" inputmode="numeric" placeholder="Ej. $1.800.000" required />
+            </div>
+
+            <button type="submit" class="hero-submit-btn">Quiero recibir información</button>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Sección de Beneficios -->
+    <section id="beneficios" class="benefits-section section-copy" aria-labelledby="benefits-heading">
+      <div class="benefits-container">
+        <header class="benefits-header">
+          <h2 id="benefits-heading" class="section-title benefits-title">
+            ¿Por qué invertir en ALTO ZAÑARTU?
+          </h2>
+        </header>
+
+        <ul class="benefits-grid">
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 21s-6.5-5.8-6.5-11.2a6.5 6.5 0 1 1 13 0C18.5 15.2 12 21 12 21Z" />
+                <circle cx="12" cy="9.8" r="2.3" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Ubicación estratégica</h3>
+            <p class="benefit-text">
+              Comuna en crecimiento con alta demanda de arriendo. Conectividad real y proyección urbana.
+            </p>
+          </li>
+
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 17l5.5-5.5 4 4L20 9" />
+                <path d="M15 9h5v5" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Bajo costo operativo</h3>
+            <p class="benefit-text">
+              Sin amenidades costosas (sin gimnasio ni piscina) = Gastos comunes bajos = Mayor rentabilidad neta.
+            </p>
+          </li>
+
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M6.5 4h11l3.5 5.5L12 20 3 9.5 6.5 4Z" />
+                <path d="M3 9.5h18" />
+                <path d="M12 20L8.5 9.5 10.5 4" />
+                <path d="M12 20l3.5-10.5L13.5 4" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Terminaciones boutique</h3>
+            <p class="benefit-text">
+              Calidad comparable a Vitacura (diseño del arquitecto Martín Tapia). Atractivo para arrendatarios de clase media-alta, lo que reduce la vacancia.
+            </p>
+          </li>
+
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M19 4c-7.5 0-13 4.2-13 11.5 0 1.8.5 3.3 1.2 4.5 1.2.7 2.7 1.2 4.5 1.2C19 21.2 20 12.5 19 4Z" />
+                <path d="M5.5 19.5c2.5-3 6-6 10.5-8" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Eficiencia y bajo costo</h3>
+            <p class="benefit-text">
+              Certificación energética que reduce costos operativos y mantención económica.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sección Datos del Mercado -->
+    <section id="mercado" class="market-section section-copy" aria-labelledby="market-heading">
+      <div class="market-container">
+        <div class="market-layout">
+          <!-- Columna izquierda: Título + distribución 1, 2 y 2 -->
+          <div class="market-content">
+            <h2 id="market-heading" class="section-title market-title">
+              LA FLORIDA el motor<br />inmobiliario de Santiago
+            </h2>
+
+            <!-- 1: Primer punto a ancho completo bajo el título -->
+            <article class="market-item market-lead-item">
+              <h3 class="market-item-title">Crecimiento líder</h3>
+              <p class="market-item-text">
+                La Florida registró un alza de 20,3% en ventas durante el segundo trimestre de 2026, pasando de 517 a 622 unidades comercializadas. Es la comuna con mayor crecimiento de la Región Metropolitana.
+              </p>
+            </article>
+
+            <!-- 2 y 2: Grilla de 2 columnas x 2 filas -->
+            <div class="market-points-grid">
+              <article class="market-item">
+                <h3 class="market-item-title">Plusvalía sostenida</h3>
+                <p class="market-item-text">
+                  Expertos inmobiliarios señalan que la comuna ha experimentado un aumento de plusvalía cercano al 30% en los últimos cuatro años.
+                </p>
+              </article>
+
+              <article class="market-item">
+                <h3 class="market-item-title">Precio del metro cuadrado</h3>
+                <p class="market-item-text">
+                  El valor del m² en La Florida ha escalado sistemáticamente hasta superar las 72 UF/m² en desarrollos recientes.
+                </p>
+              </article>
+
+              <article class="market-item">
+                <h3 class="market-item-title">Conectividad futura</h3>
+                <p class="market-item-text">
+                  La Línea 8 del Metro conectará La Florida con Providencia en 23 minutos, impulsando aún más la plusvalía de la zona.
+                </p>
+              </article>
+
+              <article class="market-item">
+                <h3 class="market-item-title">Demanda de entrega inmediata</h3>
+                <p class="market-item-text">
+                  Los proyectos con entrega inmediata y precios bajo las 4.000 UF concentran la mayor demanda del mercado.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Columna derecha: Fotografía grande -->
+          <figure class="market-figure">
+            <img
+              src="media/balcon.jpg"
+              alt="Vista nocturna a la cordillera desde el balcón de Alto Zañartu"
+              class="market-image"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección El Proyecto y Tipologías -->
+    <section id="tipologias" class="typologies-section section-copy" aria-labelledby="typologies-heading">
+      <div class="typologies-container">
+        <div class="typologies-layout">
+          <!-- Columna izquierda: Información del proyecto -->
+          <div class="typologies-info">
+            <div class="typologies-step-bar" aria-label="Indicador de tipologías">
+              <span class="step-line" aria-hidden="true"></span>
+              <div class="step-numbers" aria-hidden="true">
+                <span data-step-indicator="0" class="is-active">1</span>
+                <span data-step-indicator="1" class="is-active">2</span>
+                <span data-step-indicator="2">3</span>
+                <span data-step-indicator="3">4</span>
+              </div>
+            </div>
+
+            <h2 id="typologies-heading" class="section-title typologies-title">
+              UN ACTIVO INMOBILIARIO<br />diseñado para rentar
+            </h2>
+
+            <p class="typologies-intro">
+              Departamentos amplios, bien terminados, sin amenidades de alto costo. Diseñados para vivir ampliamente, con una tipología altamente líquida en el mercado de arriendo.
+            </p>
+
+            <ul class="typologies-features">
+              <li>Departamentos 2D2B con vista a la cordillera</li>
+              <li>Cada departamento incluye 1 estacionamiento y una bodega</li>
+              <li>Superficies desde 55,42 m² útiles / 61 m² totales</li>
+              <li>Terraza en todos los departamentos</li>
+              <li>Diseño del arquitecto Martín Tapia</li>
+              <li>Entorno familiar y en desarrollo</li>
+              <li>Entrega inmediata</li>
+            </ul>
+
+            <div class="typologies-bottom-bar">
+              <div class="typologies-price-block">
+                <span class="price-label">Precio desde</span>
+                <span class="price-value">3.721 UF</span>
+              </div>
+
+              <a href="#" class="typologies-cta">Solicitar Brochure</a>
+            </div>
+          </div>
+
+          <!-- Columna derecha: Carrusel de 4 tipologías (muestra de 2 en 2) -->
+          <div class="typologies-carousel-wrapper">
+            <div
+              id="typologiesTrack"
+              class="typologies-track"
+              role="region"
+              aria-label="Carrusel de tipologías Alto Zañartu"
+              tabindex="0"
+            >
+              <!-- D01 Oriente -->
+              <article class="typology-card" data-card-index="0">
+                <header class="typology-card-header">
+                  <h3 class="typology-card-title">D01 Oriente</h3>
+                  <span class="typology-card-subtitle">2D2B</span>
+                </header>
+
+                <div class="typology-plan-box">
+                  <img
+                    src="media/D1%20isometrico.jpg"
+                    alt="Planta isométrica Tipología D01 Oriente"
+                    class="typology-plan-img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <footer class="typology-card-footer">
+                  <div class="typology-spec-col">
+                    <span class="typology-spec-label">Sup. Total</span>
+                    <span class="typology-spec-value">Desde 70,11 m²</span>
+                  </div>
+                  <div class="typology-spec-col">
+                    <span class="typology-spec-label">Sup. Útil</span>
+                    <span class="typology-spec-value">Desde 65,56 m²</span>
+                  </div>
+                </footer>
+              </article>
+
+              <!-- D02 Nororiente -->
+              <article class="typology-card" data-card-index="1">
+                <header class="typology-card-header">
+                  <h3 class="typology-card-title">D02 Nororiente</h3>
+                  <span class="typology-card-subtitle">2D2B</span>
+                </header>
+
+                <div class="typology-plan-box">
+                  <img
+                    src="media/D2%20isometrico.jpg"
+                    alt="Planta isométrica Tipología D02 Nororiente"
+                    class="typology-plan-img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <footer class="typology-card-footer">
+                  <div class="typology-spec-col">
+                    <span class="typology-spec-label">Sup. Total</span>
+                    <span class="typology-spec-value">Desde 60,57 m²</span>
+                  </div>
+                  <div class="typology-spec-col">
+                    <span class="typology-spec-label">Sup. Útil</span>
+                    <span class="typology-spec-value">Desde 55,42 m²</span>
+                  </div>
+                </footer>
+              </article>
+
+              <!-- D03 Norponiente -->
+              <article class="typology-card" data-card-index="2">
+                <header class="typology-card-header">
+                  <h3 class="typology-card-title">D03 Norponiente</h3>
+                  <span class="typology-card-subtitle">2D2B</span>
+                </header>
+
+                <div class="typology-plan-box">
+                  <img
+                    src="media/D3%20isometrico.jpg"
+                    alt="Planta isométrica Tipología D03 Norponiente"
+                    class="typology-plan-img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <footer class="typology-card-footer">
+                  <div class="typology-spec-col">
+                    <span class="typology-spec-label">Sup. Total</span>
+                    <span class="typology-spec-value">Desde 60,57 m²</span>
+                  </div>
+                  <div class="typology-spec-col">
+                    <span class="typology-spec-label">Sup. Útil</span>
+                    <span class="typology-spec-value">Desde 55,42 m²</span>
+                  </div>
+                </footer>
+              </article>
+
+              <!-- D04 Poniente -->
+              <article class="typology-card" data-card-index="3">
+                <header class="typology-card-header">
+                  <h3 class="typology-card-title">D04 Poniente</h3>
+                  <span class="typology-card-subtitle">2D2B</span>
+                </header>
+
+                <div class="typology-plan-box">
+                  <img
+                    src="media/D4%20isometrico.jpg"
+                    alt="Planta isométrica Tipología D04 Poniente"
+                    class="typology-plan-img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <footer class="typology-card-footer">
+                  <div class="typology-spec-col">
+                    <span class="typology-spec-label">Sup. Total</span>
+                    <span class="typology-spec-value">Desde 70,11 m²</span>
+                  </div>
+                  <div class="typology-spec-col">
+                    <span class="typology-spec-label">Sup. Útil</span>
+                    <span class="typology-spec-value">Desde 65,56 m²</span>
+                  </div>
+                </footer>
+              </article>
+            </div>
+
+            <!-- Flechas del carrusel abajo a la derecha -->
+            <div class="typologies-controls" aria-label="Controles del carrusel">
+              <button
+                type="button"
+                id="typologiesPrevBtn"
+                class="carousel-arrow-btn"
+                aria-label="Ver tipologías anteriores"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 12H5M5 12l6-6M5 12l6 6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                id="typologiesNextBtn"
+                class="carousel-arrow-btn"
+                aria-label="Ver siguientes tipologías"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M19 12l-6-6M19 12l-6 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Galería del Proyecto (Espacios que rentan) -->
+    <section id="espacios" class="spaces-section section-copy" aria-labelledby="spaces-heading">
+      <div class="spaces-header-container">
+        <div class="spaces-header-grid">
+          <div class="spaces-header-left">
+            <h2 id="spaces-heading" class="section-title spaces-title">
+              ESPACIOS que rentan
+            </h2>
+            <div class="spaces-active-caption" aria-live="polite">
+              <span id="spacesActiveName" class="spaces-active-name">Living</span>
+              <p id="spacesActiveDesc" class="spaces-active-desc">
+                Amplio, luminoso, con vista a la cordillera.
+              </p>
+            </div>
+          </div>
+
+          <ul class="spaces-nav-list" aria-label="Seleccionar espacio">
+            <li>
+              <button type="button" class="spaces-nav-item is-active" data-space-target="0">
+                Living
+              </button>
+            </li>
+            <li>
+              <button type="button" class="spaces-nav-item" data-space-target="1">
+                Cocina
+              </button>
+            </li>
+            <li>
+              <button type="button" class="spaces-nav-item" data-space-target="2">
+                Dormitorios
+              </button>
+            </li>
+            <li>
+              <button type="button" class="spaces-nav-item" data-space-target="3">
+                Baños
+              </button>
+            </li>
+            <li>
+              <button type="button" class="spaces-nav-item" data-space-target="4">
+                Terraza
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Carrusel centrado con vista lateral de la imagen anterior y siguiente -->
+      <div class="spaces-stage-wrapper">
+        <div
+          id="spacesTrack"
+          class="spaces-track"
+          role="region"
+          aria-label="Galería de espacios interiores"
+          tabindex="0"
+        >
+          <!-- Clon visual previo (Terraza) para que desde el inicio se asome una foto a la izquierda -->
+          <div class="spaces-slide" data-space-clone="prev" data-space-index="4" aria-hidden="true">
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render_2.jpg"
+                alt=""
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 0: Living -->
+          <div
+            class="spaces-slide is-snapped"
+            data-space-index="0"
+            data-space-title="Living"
+            data-space-desc="Amplio, luminoso, con vista a la cordillera."
+          >
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render_3.jpg"
+                alt="Living: Amplio, luminoso, con vista a la cordillera"
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 1: Cocina -->
+          <div
+            class="spaces-slide"
+            data-space-index="1"
+            data-space-title="Cocina"
+            data-space-desc="Funcional, equipada, de bajo mantenimiento."
+          >
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render_18.jpg"
+                alt="Cocina: Funcional, equipada, de bajo mantenimiento"
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 2: Dormitorios -->
+          <div
+            class="spaces-slide"
+            data-space-index="2"
+            data-space-title="Dormitorios"
+            data-space-desc="Espaciosos, con terminaciones de alto nivel."
+          >
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render_11.jpg"
+                alt="Dormitorios: Espaciosos, con terminaciones de alto nivel"
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 3: Baños -->
+          <div
+            class="spaces-slide"
+            data-space-index="3"
+            data-space-title="Baños"
+            data-space-desc="2 baños completos."
+          >
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render_9.jpg"
+                alt="Baños: 2 baños completos"
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 4: Terraza -->
+          <div
+            class="spaces-slide"
+            data-space-index="4"
+            data-space-title="Terraza"
+            data-space-desc="En todos los departamentos, ideal para disfrutar la vista."
+          >
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render_2.jpg"
+                alt="Terraza: En todos los departamentos, ideal para disfrutar la vista"
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- Clon visual siguiente (Living) para que en la última foto también se asome una a la derecha -->
+          <div class="spaces-slide" data-space-clone="next" data-space-index="0" aria-hidden="true">
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render_3.jpg"
+                alt=""
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Miniaturas en cuadros pequeños debajo de la imagen (sin superponerse) -->
+      <div class="spaces-thumbs-container">
+        <ul class="spaces-thumbs-list" aria-label="Miniaturas de los espacios">
+          <li>
+            <button
+              type="button"
+              class="spaces-thumb-btn is-active"
+              data-space-target="0"
+              aria-label="Ver Living"
+              aria-current="true"
+            >
+              <img
+                src="media/carrusel/render_3.jpg"
+                alt="Miniatura Living"
+                class="spaces-thumb-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="spaces-thumb-btn"
+              data-space-target="1"
+              aria-label="Ver Cocina"
+            >
+              <img
+                src="media/carrusel/render_18.jpg"
+                alt="Miniatura Cocina"
+                class="spaces-thumb-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="spaces-thumb-btn"
+              data-space-target="2"
+              aria-label="Ver Dormitorios"
+            >
+              <img
+                src="media/carrusel/render_11.jpg"
+                alt="Miniatura Dormitorios"
+                class="spaces-thumb-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="spaces-thumb-btn"
+              data-space-target="3"
+              aria-label="Ver Baños"
+            >
+              <img
+                src="media/carrusel/render_9.jpg"
+                alt="Miniatura Baños"
+                class="spaces-thumb-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="spaces-thumb-btn"
+              data-space-target="4"
+              aria-label="Ver Terraza"
+            >
+              <img
+                src="media/carrusel/render_2.jpg"
+                alt="Miniatura Terraza"
+                class="spaces-thumb-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sección Terminaciones Boutique (2 Columnas: Imagen render_16 + Acordeón exclusivo) -->
+    <section id="terminaciones" class="finishes-section section-copy" aria-labelledby="finishes-heading">
+      <div class="finishes-container">
+        <div class="finishes-layout">
+          <!-- Encabezado sobre la imagen -->
+          <header class="finishes-header">
+            <h2 id="finishes-heading" class="section-title finishes-title">
+              Terminaciones BOUTIQUE
+            </h2>
+
+            <p class="finishes-lead">
+              De alto estándar que atraen a arrendatarios de mayor poder adquisitivo, reducen la vacancia y protegen el valor de tu inversión en el tiempo.
+            </p>
+          </header>
+
+          <!-- Columna izquierda: Imagen render_16 del mismo tamaño que el detalle de terminaciones -->
+          <figure class="finishes-figure">
+            <img
+              src="media/carrusel/render_16.jpg"
+              alt="Detalle de cubierta de cuarzo blanco y terminaciones boutique en Alto Zañartu"
+              class="finishes-image"
+              width="1080"
+              height="1920"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+
+          <!-- Columna derecha: Solo Detalle de terminaciones + Acordeón exclusivo -->
+          <div class="finishes-content">
+            <p class="finishes-list-label">DETALLE DE TERMINACIONES</p>
+
+            <div id="finishesAccordion" class="finishes-accordion">
+              <!-- 1. Pisos (abierto por defecto) -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="01 / 09"
+                data-finish-summary="Pisos · Porcelanato rectificado 60x60 cm"
+                open
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Retícula de porcelanato 60x60 -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="3.5" width="17" height="17" rx="2" />
+                        <path d="M12 3.5v17M3.5 12h17" />
+                        <path d="M7.5 7.5h.01M16.5 7.5h.01M7.5 16.5h.01M16.5 16.5h.01" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Pisos</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    Porcelanato rectificado 60x60 cm (CHC) en departamentos, hall y pasillos.
+                  </p>
+                </div>
+              </details>
+
+              <!-- 2. Terrazas -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="02 / 09"
+                data-finish-summary="Terrazas · Porcelanato gris oscuro 30x60 cm"
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Balcón / Terraza con baranda y sol -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="17.5" cy="6.5" r="2.2" />
+                        <path d="M3 14h18" />
+                        <path d="M4.5 14v6M9.5 14v6M14.5 14v6M19.5 14v6" />
+                        <path d="M3 20h18" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Terrazas</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    Porcelanato gris oscuro 30x60 cm.
+                  </p>
+                </div>
+              </details>
+
+              <!-- 3. Muros -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="03 / 09"
+                data-finish-summary="Muros · Cerámica blanca rectificada y esmalte al agua"
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Revestimiento de muros y cielo -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="4" width="17" height="16" rx="1.8" />
+                        <path d="M3.5 9.3h17M3.5 14.7h17" />
+                        <path d="M10 4v5.3M15.5 9.3v5.4M9 14.7V20" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Muros</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    Cocina y baños con cerámica blanca rectificada (CHC). Cielo: Losalin. Muros: esmalte al agua.
+                  </p>
+                </div>
+              </details>
+
+              <!-- 4. Ventanas -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="04 / 09"
+                data-finish-summary="Ventanas · TermoPanel PVC gris grafito"
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Ventana TermoPanel doble hoja con reflejo -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="3.5" width="17" height="17" rx="1.8" />
+                        <path d="M12 3.5v17" />
+                        <path d="M6.2 8.5l2.5-2.5M6.2 12l4-4M14.8 15.5l2.5-2.5" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Ventanas</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    TermoPanel PVC gris grafito.
+                  </p>
+                </div>
+              </details>
+
+              <!-- 5. Puertas -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="05 / 09"
+                data-finish-summary="Puertas · Calidad F60 y quincallería ISALOCK negro mate"
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Puerta principal F60 con manilla negro mate -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 20V5a1.5 1.5 0 0 1 1.5-1.5h9A1.5 1.5 0 0 1 18 5v15" />
+                        <path d="M4 20h16" />
+                        <path d="M14.2 12h1.3" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Puertas</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    Principales calidad F60 (IGAL), quincallería ISALOCK negro mate.
+                  </p>
+                </div>
+              </details>
+
+              <!-- 6. Griferías -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="06 / 09"
+                data-finish-summary="Griferías · Klipen y acero inox (MK)"
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Grifería monomando cuello cisne -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 19v-7.5a4.5 4.5 0 0 1 9 0V13" />
+                        <path d="M4.5 19h15" />
+                        <path d="M7 14.5h3.5" />
+                        <path d="M16 16.2c0 1-.8 1.8-1.8 1.8s-1.8-.8-1.8-1.8c0-1.1 1.8-2.7 1.8-2.7s1.8 1.6 1.8 2.7Z" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Griferías</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    Klipen y acero inox (MK) en cocina y baños.
+                  </p>
+                </div>
+              </details>
+
+              <!-- 7. Cocina -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="07 / 09"
+                data-finish-summary="Cocina · Cubierta de cuarzo blanco y equipamiento Wasser"
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Campana + cubierta de cuarzo + horno -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M9 3.5h6l2.5 4H6.5L9 3.5Z" />
+                        <rect x="4" y="11" width="16" height="9.5" rx="1.5" />
+                        <path d="M4 14.2h16" />
+                        <rect x="8" y="16.2" width="8" height="2.6" rx="0.6" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Cocina</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    Cubierta de cuarzo blanco. Horno, encimera y campana marca Wasser (CHC).
+                  </p>
+                </div>
+              </details>
+
+              <!-- 8. Climatización -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="08 / 09"
+                data-finish-summary="Climatización · Termo eléctrico 120 Lts Rheems"
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Termo eléctrico / confort térmico -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="6" y="3.5" width="9.5" height="15" rx="3" />
+                        <circle cx="10.75" cy="14.5" r="1.4" />
+                        <path d="M8.5 18.5v2M13 18.5v2" />
+                        <path d="M18.5 7.5c1 .9 1 2.1 0 3s-1 2.1 0 3" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Climatización</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    Termo eléctrico 120 Lts Rheems en cada departamento.
+                  </p>
+                </div>
+              </details>
+
+              <!-- 9. Ascensor -->
+              <details
+                class="finish-item"
+                name="terminaciones-alto-zanartu"
+                data-finish-step="09 / 09"
+                data-finish-summary="Ascensor · Orona (Transve), capacidad 8 personas"
+              >
+                <summary class="finish-summary">
+                  <span class="finish-summary-main">
+                    <span class="finish-icon-box" aria-hidden="true">
+                      <!-- Icono: Cabina de ascensor con puertas dobles y flechas -->
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="4" y="3.5" width="16" height="17" rx="2" />
+                        <path d="M12 7.5v13M4 7.5h16" />
+                        <path d="M9.5 5.8l1.2-1.3 1.2 1.3M13.3 4.5l1.2 1.3 1.2-1.3" />
+                      </svg>
+                    </span>
+                    <span class="finish-name">Ascensor</span>
+                  </span>
+                  <span class="finish-indicator" aria-hidden="true"></span>
+                </summary>
+                <div class="finish-body">
+                  <p class="finish-desc">
+                    Orona (Transve), capacidad 8 personas.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Proceso de Compra (Así de SIMPLE — 3 Columnas x 2 Filas) -->
+    <section id="proceso" class="process-section section-copy" aria-labelledby="process-heading">
+      <div class="process-container">
+        <header class="process-header">
+          <h2 id="process-heading" class="section-title process-title">
+            Así de SIMPLE
+          </h2>
+        </header>
+
+        <ol class="process-grid">
+          <li class="process-step">
+            <div class="process-number-row">
+              <span class="process-number">1</span>
+            </div>
+            <h3 class="process-label">Reserva</h3>
+            <p class="process-desc">
+              Asegura tu unidad, precio y promoción.
+            </p>
+          </li>
+
+          <li class="process-step">
+            <div class="process-number-row">
+              <span class="process-number">2</span>
+            </div>
+            <h3 class="process-label">Aprobación bancaria</h3>
+            <p class="process-desc">
+              Obtén tu aprobación.
+            </p>
+          </li>
+
+          <li class="process-step">
+            <div class="process-number-row">
+              <span class="process-number">3</span>
+            </div>
+            <h3 class="process-label">Promesa</h3>
+            <p class="process-desc">
+              Asegura tu negocio.
+            </p>
+          </li>
+
+          <li class="process-step">
+            <div class="process-number-row">
+              <span class="process-number">4</span>
+            </div>
+            <h3 class="process-label">Escrituración</h3>
+            <p class="process-desc">
+              Recibe tu propiedad.
+            </p>
+          </li>
+
+          <li class="process-step">
+            <div class="process-number-row">
+              <span class="process-number">5</span>
+            </div>
+            <h3 class="process-label">Entrega</h3>
+            <p class="process-desc">
+              Recibe tus llaves (Entrega Inmediata).
+            </p>
+          </li>
+
+          <li class="process-step">
+            <div class="process-number-row">
+              <span class="process-number">6</span>
+            </div>
+            <h3 class="process-label">Venta / arriendo</h3>
+            <p class="process-desc">
+              Recibe flujo o ganancias.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Sección Preguntas Frecuentes (Resolvemos tus DUDAS) -->
+    <section id="faq" class="faq-section section-copy" aria-labelledby="faq-heading">
+      <div class="faq-container">
+        <header class="faq-header">
+          <h2 id="faq-heading" class="section-title faq-title">
+            Resolvemos tus DUDAS
+          </h2>
+        </header>
+
+        <div class="faq-list">
+          <!-- 1 -->
+          <details class="faq-card" name="faq-alto-zanartu" open>
+            <summary class="faq-summary">
+              <span class="faq-question">¿Cuáles son los gastos comunes estimados?</span>
+              <span class="faq-indicator" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p class="faq-answer">
+                $1.900 por m². Desde $105.000 aprox. al mes, según superficie del departamento.
+              </p>
+            </div>
+          </details>
+
+          <!-- 2 -->
+          <details class="faq-card" name="faq-alto-zanartu">
+            <summary class="faq-summary">
+              <span class="faq-question">¿Hay facilidades para pago del pie?</span>
+              <span class="faq-indicator" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p class="faq-answer">
+                Sí. Desde un 4% con 18 cuotas sin interés.
+              </p>
+            </div>
+          </details>
+
+          <!-- 3 -->
+          <details class="faq-card" name="faq-alto-zanartu">
+            <summary class="faq-summary">
+              <span class="faq-question">¿Cuándo se entrega?</span>
+              <span class="faq-indicator" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p class="faq-answer">
+                Entrega inmediata.
+              </p>
+            </div>
+          </details>
+
+          <!-- 4 -->
+          <details class="faq-card" name="faq-alto-zanartu">
+            <summary class="faq-summary">
+              <span class="faq-question">¿Cuál es la proyección de plusvalía?</span>
+              <span class="faq-indicator" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p class="faq-answer">
+                La Florida tiene un crecimiento del 20,3%, el más alto de la Región Metropolitana, y una plusvalía cercana al 30% en los últimos cuatro años. Consulta con nuestro equipo comercial para recibir el dossier de inversión.
+              </p>
+            </div>
+          </details>
+
+          <!-- 5 -->
+          <details class="faq-card" name="faq-alto-zanartu">
+            <summary class="faq-summary">
+              <span class="faq-question">¿Qué incluye el proyecto?</span>
+              <span class="faq-indicator" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p class="faq-answer">
+                Departamentos 2D2B desde 55,42 m² útiles / 61 m² totales, con terraza y vista a la cordillera. Terminaciones de alto nivel, bajo costo de mantención, quincho, bicicleteros y conserjería 24/7.
+              </p>
+            </div>
+          </details>
+
+          <!-- 6 (Pregunta adicional clave 1) -->
+          <details class="faq-card" name="faq-alto-zanartu">
+            <summary class="faq-summary">
+              <span class="faq-question">¿Cada departamento incluye estacionamiento y bodega?</span>
+              <span class="faq-indicator" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p class="faq-answer">
+                Sí. Todas las unidades incluyen 1 estacionamiento y 1 bodega dentro del precio desde 3.721 UF, un atributo diferenciador que acelera la colocación en arriendo y fortalece la rentabilidad futura.
+              </p>
+            </div>
+          </details>
+
+          <!-- 7 (Pregunta adicional clave 2) -->
+          <details class="faq-card" name="faq-alto-zanartu">
+            <summary class="faq-summary">
+              <span class="faq-question">¿Qué respaldo constructivo y arquitectónico tiene Alto Zañartu?</span>
+              <span class="faq-indicator" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p class="faq-answer">
+                El proyecto cuenta con el respaldo de Constructora Vector y el diseño del arquitecto Martín Tapia, combinando estándar boutique y certificación energética para asegurar baja mantención y proteger tu inversión en el tiempo.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Ubicación (Fondo blanco + Columna izq editorial + Mapa grande + 3 bloques abajo sin iconos) -->
+    <section id="ubicacion" class="location-section section-copy" aria-labelledby="location-heading">
+      <div class="location-container">
+        <div class="location-layout">
+          <!-- Columna izquierda estilo referencia 1: Título en 3 líneas arriba + Párrafo y botón abajo -->
+          <div class="location-content">
+            <h2 id="location-heading" class="section-title location-title">
+              La Florida<br />CONECTIVIDAD<br />&amp; PLUSVALÍA
+            </h2>
+
+            <div class="location-bottom-copy">
+              <p class="location-lead">
+                ALTO ZAÑARTU se ubica en Corregidor Zañartu 11544, en una zona consolidada de La Florida. Un barrio familiar que se está renovando, con plazas, colegios y cercano a las estaciones de metro Los Quillayes y Elisa Correa. Acceso directo a Av. Vicuña Mackenna Ote y Av. Diego Portales.
+              </p>
+
+              <a href="#contacto" class="location-cta">Quiero más información</a>
+            </div>
+          </div>
+
+          <!-- Columna derecha: Imagen única del mapa más grande directo sobre fondo blanco, sin contenedor ni máscara -->
+          <img
+            src="media/mapa%20unicacion%20proyecto.png"
+            alt="Mapa de ubicación de Alto Zañartu en Corregidor Zañartu 11544, La Florida, cercano a Metro Los Quillayes y Elisa Correa"
+            class="location-map-image"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <!-- Fila inferior de 3 bloques debajo del todo (estilo referencia 2, sin iconos) -->
+        <div class="location-bottom-grid">
+          <article class="location-highlight-item">
+            <h3 class="location-highlight-title">Expansión</h3>
+            <p class="location-highlight-text">
+              La Florida tiene un crecimiento equivalente al 20,3%, el más alto de la Región Metropolitana.
+            </p>
+          </article>
+
+          <article class="location-highlight-item">
+            <h3 class="location-highlight-title">Futura Línea 8</h3>
+            <p class="location-highlight-text">
+              Conectará La Florida entre las comunas de Providencia y Puente Alto, aumentando la plusvalía de la zona.
+            </p>
+          </article>
+
+          <article class="location-highlight-item">
+            <h3 class="location-highlight-title">Demanda sostenida</h3>
+            <p class="location-highlight-text">
+              Familias jóvenes y profesionales buscan más espacio y entorno familiar.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección CTA Final (Fondo render_8 + Overlay negro + Título en amarillo principal) -->
+    <section id="cta-final" class="final-cta-section section-copy" aria-labelledby="final-cta-heading">
+      <img
+        src="media/carrusel/render_8.jpg"
+        alt="Vista desde la terraza de Alto Zañartu hacia la cordillera"
+        class="final-cta-bg"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="final-cta-overlay" aria-hidden="true"></div>
+
+      <div class="final-cta-container">
+        <h2 id="final-cta-heading" class="section-title final-cta-title">
+          INVIERTE en un proyecto con respaldo y proyección
+        </h2>
+        <p class="final-cta-lead">
+          Departamentos 2D2B en La Florida, con vista a la cordillera. Entrega inmediata.
+        </p>
+        <a href="#contacto" class="final-cta-btn">Solicitar información</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sección Footer (Fondo blanco + Logos + Contacto + ALTO ZAÑARTU en gran formato) -->
+  <footer class="site-footer section-copy">
+    <div class="footer-container">
+      <div class="footer-info-grid">
+        <!-- Columna 1: Logo Alto Zañartu | Logo Constructora Vector -->
+        <div class="footer-col">
+          <span class="footer-col-label">Proyecto y Respaldo</span>
+          <div class="footer-brand-pair">
+            <img
+              src="assets/logos/logotipo.svg"
+              alt="Alto Zañartu"
+              class="footer-logo-az"
+              loading="lazy"
+            />
+            <span class="footer-logo-divider" aria-hidden="true"></span>
+            <img
+              src="media/logo%20vector%20.svg"
+              alt="Constructora Vector"
+              class="footer-logo-vector"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Columna 2: Comercializa OneKey -->
+        <div class="footer-col">
+          <span class="footer-col-label">Comercializa</span>
+          <img
+            src="media/logo%20onekey.svg"
+            alt="OneKey"
+            class="footer-logo-onekey"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Columna 3: Contacto -->
+        <div class="footer-col">
+          <span class="footer-col-label">Contacto</span>
+          <ul class="footer-contact-list">
+            <li><strong>Victoria Palma</strong></li>
+            <li>
+              Correo:
+              <a href="mailto:victoria.palma@onekeybroker.com">victoria.palma@onekeybroker.com</a>
+            </li>
+            <li>
+              Teléfono:
+              <a href="tel:+56998737372">+569 98737372</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Volver arriba -->
+        <a href="#" class="footer-back-top">Volver arriba</a>
+      </div>
+
+      <!-- Texto gigante ALTO ZAÑARTU a todo el ancho como en la referencia -->
+      <div class="footer-wordmark-wrap" aria-hidden="true">
+        <span class="footer-wordmark">ALTO ZAÑARTU</span>
+      </div>
+
+      <!-- Barra inferior de Copyright -->
+      <div class="footer-bottom-bar">
+        <span>© 2026 Constructora Vector. Todos los derechos reservados</span>
+        <span>Corregidor Zañartu 11544, La Florida</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const video = document.getElementById('heroVideo');
+      if (!video) return;
+
+      const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let isInViewport = true;
+
+      function syncPlayback() {
+        if (reducedMotionQuery.matches || !isInViewport || document.hidden) {
+          video.pause();
+        } else {
+          video.play().catch(function () {
+            /* Autoplay bloqueado por el navegador; se mantiene el poster */
+          });
+        }
+      }
+
+      /* Respetar prefers-reduced-motion */
+      if (reducedMotionQuery.matches) {
+        video.removeAttribute('autoplay');
+        video.pause();
+      }
+
+      if (typeof reducedMotionQuery.addEventListener === 'function') {
+        reducedMotionQuery.addEventListener('change', syncPlayback);
+      }
+
+      /* Pausar fuera del viewport */
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              isInViewport = entry.isIntersecting;
+              syncPlayback();
+            });
+          },
+          { threshold: 0.1 }
+        );
+        observer.observe(video);
+      }
+
+      /* Pausar cuando la pestaña no está visible */
+      document.addEventListener('visibilitychange', syncPlayback);
+    })();
+
+    /* Header fijo: alterna entre logo completo e Isotipo al hacer scroll */
+    (function () {
+      const header = document.getElementById('siteHeader');
+      if (!header) return;
+
+      function syncHeaderOnScroll() {
+        header.classList.toggle('is-scrolled', window.scrollY > 36);
+      }
+
+      window.addEventListener('scroll', syncHeaderOnScroll, { passive: true });
+      syncHeaderOnScroll();
+    })();
+
+    /* Carrusel de Tipologías (2 en 2 con Scroll Snap + flechas) */
+    (function () {
+      const track = document.getElementById('typologiesTrack');
+      const prevBtn = document.getElementById('typologiesPrevBtn');
+      const nextBtn = document.getElementById('typologiesNextBtn');
+      const stepIndicators = document.querySelectorAll('[data-step-indicator]');
+
+      if (!track || !prevBtn || !nextBtn) return;
+
+      const cards = Array.from(track.querySelectorAll('.typology-card'));
+
+      function getStepWidth() {
+        if (cards.length < 2) return track.clientWidth;
+        const firstRect = cards[0].getBoundingClientRect();
+        const secondRect = cards[1].getBoundingClientRect();
+        const singleAdvance = secondRect.left - firstRect.left;
+        /* En escritorio avanza de 2 en 2 tarjetas; en móvil de 1 en 1 */
+        return window.innerWidth > 768 ? singleAdvance * 2 : singleAdvance;
+      }
+
+      function updateCarouselUI() {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const currentScroll = track.scrollLeft;
+        const isAtSecondPair = currentScroll > maxScroll * 0.45;
+
+        stepIndicators.forEach(function (el) {
+          const idx = Number(el.getAttribute('data-step-indicator'));
+          const active = isAtSecondPair ? idx >= 2 : idx < 2;
+          el.classList.toggle('is-active', active);
+        });
+      }
+
+      prevBtn.addEventListener('click', function () {
+        track.scrollBy({ left: -getStepWidth(), behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', function () {
+        track.scrollBy({ left: getStepWidth(), behavior: 'smooth' });
+      });
+
+      /* Sincronización nativa con scrollsnapchange o fallback con scroll */
+      if ('onscrollsnapchange' in HTMLElement.prototype) {
+        track.addEventListener('scrollsnapchange', updateCarouselUI);
+      }
+      track.addEventListener('scroll', updateCarouselUI, { passive: true });
+      window.addEventListener('resize', updateCarouselUI);
+      updateCarouselUI();
+    })();
+
+    /* Galería de Espacios (Centrada con peek lateral + miniaturas debajo) */
+    (function () {
+      const track = document.getElementById('spacesTrack');
+      const activeNameEl = document.getElementById('spacesActiveName');
+      const activeDescEl = document.getElementById('spacesActiveDesc');
+      const thumbBtns = document.querySelectorAll('.spaces-thumb-btn[data-space-target]');
+      const navBtns = document.querySelectorAll('.spaces-nav-item[data-space-target]');
+
+      if (!track) return;
+
+      const realSlides = Array.from(
+        track.querySelectorAll('.spaces-slide:not([data-space-clone])')
+      );
+      const allSlides = Array.from(track.querySelectorAll('.spaces-slide'));
+
+      function centerSlide(slideEl, smooth) {
+        if (!slideEl) return;
+        const trackRect = track.getBoundingClientRect();
+        const slideRect = slideEl.getBoundingClientRect();
+        const offset =
+          slideRect.left -
+          trackRect.left +
+          track.scrollLeft -
+          (trackRect.width - slideRect.width) / 2;
+
+        track.scrollTo({
+          left: offset,
+          behavior: smooth ? 'smooth' : 'instant'
+        });
+      }
+
+      function setActiveSpace(index) {
+        const targetSlide = realSlides[index];
+        if (!targetSlide) return;
+
+        allSlides.forEach(function (s) {
+          s.classList.toggle('is-snapped', s === targetSlide);
+        });
+
+        if (activeNameEl) {
+          activeNameEl.textContent = targetSlide.getAttribute('data-space-title') || '';
+        }
+        if (activeDescEl) {
+          activeDescEl.textContent = targetSlide.getAttribute('data-space-desc') || '';
+        }
+
+        thumbBtns.forEach(function (btn) {
+          const isMatch = Number(btn.getAttribute('data-space-target')) === index;
+          btn.classList.toggle('is-active', isMatch);
+          if (isMatch) {
+            btn.setAttribute('aria-current', 'true');
+          } else {
+            btn.removeAttribute('aria-current');
+          }
+        });
+
+        navBtns.forEach(function (btn) {
+          const isMatch = Number(btn.getAttribute('data-space-target')) === index;
+          btn.classList.toggle('is-active', isMatch);
+        });
+      }
+
+      function goToSpace(index, smooth) {
+        const targetSlide = realSlides[index];
+        if (!targetSlide) return;
+        setActiveSpace(index);
+        centerSlide(targetSlide, smooth !== false);
+      }
+
+      /* Eventos en miniaturas y lista superior */
+      thumbBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const idx = Number(btn.getAttribute('data-space-target'));
+          goToSpace(idx, true);
+        });
+      });
+
+      navBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const idx = Number(btn.getAttribute('data-space-target'));
+          goToSpace(idx, true);
+        });
+      });
+
+      /* Clic en las fotos laterales (peek) para centrarlas */
+      allSlides.forEach(function (slide) {
+        slide.addEventListener('click', function () {
+          const idx = Number(slide.getAttribute('data-space-index'));
+          goToSpace(idx, true);
+        });
+      });
+
+      /* Detectar cuál slide está en el centro al hacer scroll/swipe */
+      let scrollTimer = null;
+      track.addEventListener(
+        'scroll',
+        function () {
+          if (scrollTimer) cancelAnimationFrame(scrollTimer);
+          scrollTimer = requestAnimationFrame(function () {
+            const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
+            let closestSlide = realSlides[0];
+            let minDistance = Infinity;
+
+            allSlides.forEach(function (slide) {
+              const rect = slide.getBoundingClientRect();
+              const slideCenter = rect.left + rect.width / 2;
+              const dist = Math.abs(slideCenter - trackCenter);
+              if (dist < minDistance) {
+                minDistance = dist;
+                closestSlide = slide;
+              }
+            });
+
+            if (closestSlide) {
+              const idx = Number(closestSlide.getAttribute('data-space-index'));
+              setActiveSpace(idx);
+            }
+          });
+        },
+        { passive: true }
+      );
+
+      /* Posicionar inicialmente en el primer espacio real (Living) dejando ver Terraza a la izquierda y Cocina a la derecha */
+      window.addEventListener('load', function () {
+        centerSlide(realSlides[0], false);
+      });
+      requestAnimationFrame(function () {
+        centerSlide(realSlides[0], false);
+      });
+    })();
+
+    /* Acordeón exclusivo de Terminaciones Boutique (siempre 1 abierto) */
+    (function () {
+      const accordion = document.getElementById('finishesAccordion');
+      if (!accordion) return;
+
+      const items = Array.from(accordion.querySelectorAll('details.finish-item'));
+
+      items.forEach(function (item) {
+        const summary = item.querySelector('summary');
+        if (summary) {
+          /* Si el usuario presiona el ítem que ya está abierto, mantenerlo abierto para que siempre haya 1 visible */
+          summary.addEventListener('click', function (e) {
+            if (item.open) {
+              e.preventDefault();
+            }
+          });
+        }
+
+        item.addEventListener('toggle', function () {
+          if (item.open) {
+            /* Cerrar cualquier otro ítem en navegadores sin soporte nativo de details[name] */
+            items.forEach(function (other) {
+              if (other !== item && other.open) {
+                other.open = false;
+              }
+            });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
