@@ -419,13 +419,19 @@
         height: 47px;
       }
 
-      .nav-links {
+      .nav-links,
+      .section-nav.is-scrolled .nav-links {
         gap: 16px;
-        padding: 7px 14px;
+        padding: 10px 22px;
       }
 
       .nav-links li:not(:last-child) {
         display: none;
+      }
+
+      .nav-links li:last-child a {
+        font-size: 0.88rem;
+        font-weight: 600;
       }
 
       .hero-main {
@@ -2491,8 +2497,8 @@
     <nav aria-label="Navegación principal">
       <ul class="nav-links">
         <li><a href="#beneficios">El Proyecto</a></li>
-        <li><a href="#tipologias">Tipologías</a></li>
         <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#tipologias">Tipologías</a></li>
         <li><a href="#contacto">Cotizar</a></li>
       </ul>
     </nav>
@@ -2693,6 +2699,61 @@
               decoding="async"
             />
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Ubicación (Fondo blanco + Columna izq editorial + Mapa grande + 3 bloques abajo sin iconos) -->
+    <section id="ubicacion" class="location-section section-copy" aria-labelledby="location-heading">
+      <div class="location-container">
+        <div class="location-layout">
+          <!-- Columna izquierda estilo referencia 1: Título en 3 líneas arriba + Párrafo y botón abajo -->
+          <div class="location-content">
+            <h2 id="location-heading" class="section-title location-title">
+              La Florida<br />CONECTIVIDAD<br />&amp; PLUSVALÍA
+            </h2>
+
+            <div class="location-bottom-copy">
+              <p class="location-lead">
+                ALTO ZAÑARTU se ubica en Corregidor Zañartu 11544, en una zona consolidada de La Florida. Un barrio familiar que se está renovando, con plazas, colegios y cercano a las estaciones de metro Los Quillayes y Elisa Correa. Acceso directo a Av. Vicuña Mackenna Ote y Av. Diego Portales.
+              </p>
+
+              <a href="#contacto" class="location-cta">Quiero mi cotización</a>
+            </div>
+          </div>
+
+          <!-- Columna derecha: Imagen única del mapa más grande directo sobre fondo blanco, sin contenedor ni máscara -->
+          <img
+            src="media/mapa%20unicacion%20proyecto.png"
+            alt="Mapa de ubicación de Alto Zañartu en Corregidor Zañartu 11544, La Florida, cercano a Metro Los Quillayes y Elisa Correa"
+            class="location-map-image"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <!-- Fila inferior de 3 bloques debajo del todo (estilo referencia 2, sin iconos) -->
+        <div class="location-bottom-grid">
+          <article class="location-highlight-item">
+            <h3 class="location-highlight-title">Expansión</h3>
+            <p class="location-highlight-text">
+              La Florida tiene un crecimiento equivalente al 20,3%, el más alto de la Región Metropolitana.
+            </p>
+          </article>
+
+          <article class="location-highlight-item">
+            <h3 class="location-highlight-title">Futura Línea 8</h3>
+            <p class="location-highlight-text">
+              Conectará La Florida entre las comunas de Providencia y Puente Alto, aumentando la plusvalía de la zona.
+            </p>
+          </article>
+
+          <article class="location-highlight-item">
+            <h3 class="location-highlight-title">Demanda sostenida</h3>
+            <p class="location-highlight-text">
+              Familias jóvenes y profesionales buscan más espacio y entorno familiar.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -3628,61 +3689,6 @@
               </p>
             </div>
           </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección Ubicación (Fondo blanco + Columna izq editorial + Mapa grande + 3 bloques abajo sin iconos) -->
-    <section id="ubicacion" class="location-section section-copy" aria-labelledby="location-heading">
-      <div class="location-container">
-        <div class="location-layout">
-          <!-- Columna izquierda estilo referencia 1: Título en 3 líneas arriba + Párrafo y botón abajo -->
-          <div class="location-content">
-            <h2 id="location-heading" class="section-title location-title">
-              La Florida<br />CONECTIVIDAD<br />&amp; PLUSVALÍA
-            </h2>
-
-            <div class="location-bottom-copy">
-              <p class="location-lead">
-                ALTO ZAÑARTU se ubica en Corregidor Zañartu 11544, en una zona consolidada de La Florida. Un barrio familiar que se está renovando, con plazas, colegios y cercano a las estaciones de metro Los Quillayes y Elisa Correa. Acceso directo a Av. Vicuña Mackenna Ote y Av. Diego Portales.
-              </p>
-
-              <a href="#contacto" class="location-cta">Quiero mi cotización</a>
-            </div>
-          </div>
-
-          <!-- Columna derecha: Imagen única del mapa más grande directo sobre fondo blanco, sin contenedor ni máscara -->
-          <img
-            src="media/mapa%20unicacion%20proyecto.png"
-            alt="Mapa de ubicación de Alto Zañartu en Corregidor Zañartu 11544, La Florida, cercano a Metro Los Quillayes y Elisa Correa"
-            class="location-map-image"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-
-        <!-- Fila inferior de 3 bloques debajo del todo (estilo referencia 2, sin iconos) -->
-        <div class="location-bottom-grid">
-          <article class="location-highlight-item">
-            <h3 class="location-highlight-title">Expansión</h3>
-            <p class="location-highlight-text">
-              La Florida tiene un crecimiento equivalente al 20,3%, el más alto de la Región Metropolitana.
-            </p>
-          </article>
-
-          <article class="location-highlight-item">
-            <h3 class="location-highlight-title">Futura Línea 8</h3>
-            <p class="location-highlight-text">
-              Conectará La Florida entre las comunas de Providencia y Puente Alto, aumentando la plusvalía de la zona.
-            </p>
-          </article>
-
-          <article class="location-highlight-item">
-            <h3 class="location-highlight-title">Demanda sostenida</h3>
-            <p class="location-highlight-text">
-              Familias jóvenes y profesionales buscan más espacio y entorno familiar.
-            </p>
-          </article>
         </div>
       </div>
     </section>
