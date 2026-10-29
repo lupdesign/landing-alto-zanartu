@@ -335,16 +335,37 @@
       letter-spacing: 0.01em;
     }
 
-    .form-field input {
+    .form-field input,
+    .form-field select {
       width: 100%;
       padding: 9px 12px;
       font-family: 'Work Sans', sans-serif;
       font-size: 0.84375rem;
       color: var(--brand-ink);
-      background: rgba(255, 255, 255, 0.62);
+      background-color: rgba(255, 255, 255, 0.62);
       border: 1px solid rgba(0, 0, 0, 0.14);
       border-radius: var(--radius-input);
       transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .form-field select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 34px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 13px;
+      cursor: pointer;
+    }
+
+    .form-field select:invalid {
+      color: var(--brand-gray);
+    }
+
+    .form-field select option {
+      color: var(--brand-ink);
+      background-color: var(--brand-white);
     }
 
     .form-field input::placeholder {
@@ -352,14 +373,16 @@
       opacity: 0.75;
     }
 
-    .form-field input:focus-visible {
+    .form-field input:focus-visible,
+    .form-field select:focus-visible {
       outline: 2px solid var(--brand-yellow);
       outline-offset: 1px;
       border-color: var(--brand-ink);
-      background: rgba(255, 255, 255, 0.92);
+      background-color: rgba(255, 255, 255, 0.92);
     }
 
-    .form-field input:invalid:user-invalid {
+    .form-field input:invalid:user-invalid,
+    .form-field select:invalid:user-invalid {
       border-color: #b91c1c;
     }
 
@@ -1266,15 +1289,16 @@
 
     .spaces-thumbs-list {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: clamp(10px, 1.4vw, 16px);
+      gap: clamp(10px, 1.2vw, 14px);
       list-style: none;
     }
 
     .spaces-thumb-btn {
       position: relative;
-      inline-size: clamp(68px, 7.5vw, 96px);
+      inline-size: clamp(60px, 6.8vw, 88px);
       aspect-ratio: 4 / 5;
       border-radius: var(--radius-input);
       overflow: clip;
@@ -1382,7 +1406,7 @@
       }
 
       .spaces-thumb-btn {
-        inline-size: calc((100% - 32px) / 5);
+        inline-size: calc((100% - 24px) / 4);
         max-inline-size: 68px;
         min-inline-size: 52px;
         border-radius: 8px;
@@ -2563,7 +2587,12 @@
 
             <div class="form-field full-width">
               <label for="renta">Renta líquida mensual</label>
-              <input type="text" id="renta" name="renta" inputmode="numeric" placeholder="Ej. $1.800.000" required />
+              <select id="renta" name="renta" required>
+                <option value="" disabled selected>Selecciona un tramo</option>
+                <option value="Entre $3.000.000 y $4.000.000">Entre $3.000.000 y $4.000.000</option>
+                <option value="Entre $4.000.000 y $5.000.000">Entre $4.000.000 y $5.000.000</option>
+                <option value="Más de $5.000.000">Más de $5.000.000</option>
+              </select>
             </div>
 
             <button type="submit" class="hero-submit-btn">Quiero mi cotización</button>
@@ -2998,6 +3027,11 @@
                 Terraza
               </button>
             </li>
+            <li>
+              <button type="button" class="spaces-nav-item" data-space-target="5" data-space-group="Fachada">
+                Fachada
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -3008,14 +3042,14 @@
           id="spacesTrack"
           class="spaces-track"
           role="region"
-          aria-label="Galería de espacios interiores"
+          aria-label="Galería de espacios del proyecto"
           tabindex="0"
         >
-          <!-- Clon visual previo (Terraza) para que desde el inicio se asome una foto a la izquierda -->
-          <div class="spaces-slide" data-space-clone="prev" data-space-index="4" aria-hidden="true">
+          <!-- Clon visual previo (Fachada) para que desde el inicio se asome una foto a la izquierda -->
+          <div class="spaces-slide" data-space-clone="prev" data-space-index="7" aria-hidden="true">
             <div class="spaces-slide-card">
               <img
-                src="media/carrusel/render_2.jpg"
+                src="media/carrusel/render%20fachada5.jpg"
                 alt=""
                 class="spaces-slide-img"
                 loading="lazy"
@@ -3107,6 +3141,60 @@
               <img
                 src="media/carrusel/render_2.jpg"
                 alt="Terraza: En todos los departamentos, ideal para disfrutar la vista"
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 5: Fachada (Vista atardecer) -->
+          <div
+            class="spaces-slide"
+            data-space-index="5"
+            data-space-title="Fachada"
+            data-space-desc="Arquitectura boutique de 4 pisos, moderna y a escala humana."
+          >
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render%20fachada1.jpg"
+                alt="Fachada Alto Zañartu al atardecer: Arquitectura boutique de 4 pisos, moderna y a escala humana"
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 6: Fachada (Vista diurna) -->
+          <div
+            class="spaces-slide"
+            data-space-index="6"
+            data-space-title="Fachada"
+            data-space-desc="Arquitectura boutique de 4 pisos, moderna y a escala humana."
+          >
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render%20fachada3.jpg"
+                alt="Fachada Alto Zañartu de día: Arquitectura boutique de 4 pisos, moderna y a escala humana"
+                class="spaces-slide-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 7: Fachada (Vista nocturna) -->
+          <div
+            class="spaces-slide"
+            data-space-index="7"
+            data-space-title="Fachada"
+            data-space-desc="Arquitectura boutique de 4 pisos, moderna y a escala humana."
+          >
+            <div class="spaces-slide-card">
+              <img
+                src="media/carrusel/render%20fachada5.jpg"
+                alt="Fachada Alto Zañartu de noche: Arquitectura boutique de 4 pisos, moderna y a escala humana"
                 class="spaces-slide-img"
                 loading="lazy"
                 decoding="async"
@@ -3207,6 +3295,54 @@
               <img
                 src="media/carrusel/render_2.jpg"
                 alt="Miniatura Terraza"
+                class="spaces-thumb-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="spaces-thumb-btn"
+              data-space-target="5"
+              aria-label="Ver Fachada (Atardecer)"
+            >
+              <img
+                src="media/carrusel/render%20fachada1.jpg"
+                alt="Miniatura Fachada 1"
+                class="spaces-thumb-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="spaces-thumb-btn"
+              data-space-target="6"
+              aria-label="Ver Fachada (Día)"
+            >
+              <img
+                src="media/carrusel/render%20fachada3.jpg"
+                alt="Miniatura Fachada 2"
+                class="spaces-thumb-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="spaces-thumb-btn"
+              data-space-target="7"
+              aria-label="Ver Fachada (Noche)"
+            >
+              <img
+                src="media/carrusel/render%20fachada5.jpg"
+                alt="Miniatura Fachada 3"
                 class="spaces-thumb-img"
                 loading="lazy"
                 decoding="async"
@@ -3948,8 +4084,12 @@
           }
         });
 
+        const activeTitle = targetSlide.getAttribute('data-space-title') || '';
         navBtns.forEach(function (btn) {
-          const isMatch = Number(btn.getAttribute('data-space-target')) === index;
+          const btnGroup = btn.getAttribute('data-space-group');
+          const isMatch = btnGroup
+            ? btnGroup === activeTitle
+            : Number(btn.getAttribute('data-space-target')) === index;
           btn.classList.toggle('is-active', isMatch);
         });
       }
