@@ -88,7 +88,7 @@
 | :--- | :--- | :--- |
 | **Título Sección (H2)** | **UN ACTIVO INMOBILIARIO**<br>diseñado para rentar | **TU PRÓXIMO HOGAR**<br>diseñado para vivir ampliamente |
 | **Bajada / Intro** | Departamentos amplios, bien terminados, sin amenidades de alto costo. Diseñados para vivir ampliamente, con una tipología altamente líquida en el mercado de arriendo. | **Departamentos amplios, luminosos y con excelente distribución. Diseñados para vivir con total comodidad, con amplias terrazas y terminaciones pensadas para durar.** |
-| **Lista de Atributos (Bullets)** | • Departamentos 2D2B con vista a la cordillera<br>• Cada departamento incluye 1 estacionamiento y una bodega<br>• Superficies desde 55,42 m² útiles / 61 m² totales<br>• Terraza en todos los departamentos<br>• Diseño del arquitecto Martín Tapia<br>• Entorno familiar y en desarrollo<br>• Entrega inmediata | • **Departamentos 2D2B con vista despejada a la cordillera**<br>• **Cada departamento incluye 1 estacionamiento y 1 bodega**<br>• **Superficies desde 55,42 m² útiles / 61 m² totales**<br>• **Terraza en todos los departamentos**<br>• **Diseño de autor por el arquitecto Martín Tapia**<br>• **Barrio residencial tranquilo y seguro**<br>• **Entrega inmediata (múdate hoy)** |
+| **Lista de Atributos (Bullets)** | • Departamentos 2D2B con vista a la cordillera<br>• Cada departamento incluye 1 estacionamiento y una bodega<br>• Superficies desde 55,42 m² útiles / 61 m² totales<br>• Terraza en todos los departamentos<br>• Diseño del arquitecto Martín Tapia<br>• Entorno familiar y en desarrollo<br>• Pronta entrega primer trimestre 2027 | • **Departamentos 2D2B con vista despejada a la cordillera**<br>• **Cada departamento incluye 1 estacionamiento y 1 bodega**<br>• **Superficies desde 55,42 m² útiles / 61 m² totales**<br>• **Terraza en todos los departamentos**<br>• **Diseño de autor por el arquitecto Martín Tapia**<br>• **Barrio residencial tranquilo y seguro**<br>• **Pronta entrega primer trimestre 2027** |
 | **Bloque de Precio** | Precio desde<br>**3.721 UF** | Precio desde<br>**3.721 UF** *(Incluye estacionamiento y bodega)* |
 | **Botón de Acción** | Solicitar Brochure | **Solicitar Brochure** *(Mantiene texto exacto)* |
 | **Tarjeta Tipología D01** | **D01 Oriente** — 2D2B<br>Sup. Total: Desde 70,11 m²<br>Sup. Útil: Desde 65,56 m² | **D01 Oriente** — 2D2B<br>Sup. Total: Desde 70,11 m²<br>Sup. Útil: Desde 65,56 m² |
@@ -146,7 +146,7 @@
 | **Paso 2** | **Aprobación bancaria**<br>Obtén tu aprobación. | **Evaluación hipotecaria**<br>Te asesoramos paso a paso en la gestión de tu crédito bancario. |
 | **Paso 3** | **Promesa**<br>Asegura tu negocio. | **Promesa de compraventa**<br>Formaliza la compra de tu hogar con total respaldo legal. |
 | **Paso 4** | **Escrituración**<br>Recibe tu propiedad. | **Escrituración**<br>Firma notarial de tu propiedad definitiva. |
-| **Paso 5** | **Entrega**<br>Recibe tus llaves (Entrega Inmediata). | **Entrega de llaves**<br>¡Momento de celebrar! Recibe las llaves de tu nuevo departamento. |
+| **Paso 5** | **Entrega**<br>Recibe tus llaves (Pronta entrega primer trimestre 2027). | **Entrega de llaves**<br>¡Momento de celebrar! Recibe las llaves de tu nuevo departamento (Pronta entrega primer trimestre 2027). |
 | **Paso 6** | **Venta / arriendo**<br>Recibe flujo o ganancias. | **Mudanza y nuevo hogar**<br>Instálate junto a tu familia y empieza a disfrutar tu vida en Alto Zañartu. |
 | **Botón de Acción** | Quiero mi cotización | **Quiero mi cotización** *(Mantiene texto exacto)* |
 
@@ -161,7 +161,7 @@
 | **Título Sección (H2)** | Resolvemos tus **DUDAS** | Resolvemos tus **DUDAS** *(Palabra clave destacada)* |
 | **1. Gastos comunes** | $1.900 por (m²) aprox. según superficie del departamento. | **¿Cuáles son los gastos comunes estimados?**<br>Son aproximadamente $1.900 por m² según superficie del departamento. Al no tener amenidades de alto costo, disfrutas de un valor bajo y controlado para cuidar el presupuesto de tu hogar. |
 | **2. Pie en cuotas** | Sí consulta las posibilidades con los asesores pero puedes pagar en cuotas y con aporte inmobiliario | **¿Hay facilidades para pagar el pie?**<br>Sí consulta las posibilidades con los asesores pero puedes pagar en cuotas y con aporte inmobiliario |
-| **3. Fecha de entrega** | Entrega inmediata. | **¿Cuándo puedo mudarme?**<br>¡Entrega inmediata! El edificio está 100% construido y listo para que recibas tus llaves sin esperar años de construcción. |
+| **3. Fecha de entrega** | Pronta entrega primer trimestre 2027 | **¿Cuándo se entrega?**<br>Pronta entrega primer trimestre 2027 |
 | **4. Plusvalía y sector** | La Florida tiene un crecimiento del 20,3%, el más alto de la Región Metropolitana, y una plusvalía cercana al 30% en los últimos cuatro años... | **¿Por qué es una gran decisión comprar en Alto Zañartu?**<br>Porque adquieres una vivienda en un barrio consolidado de La Florida que ha registrado una plusvalía cercana al 30% en 4 años y que sumará la futura Línea 8 del Metro, asegurando el valor del patrimonio de tu familia. |
 | **5. Qué incluye** | Departamentos 2D2B desde 55,42 m² útiles / 61 m² totales, con terraza y vista a la cordillera. Terminaciones de alto nivel, bajo costo de mantención, quincho, bicicleteros y conserjería 24/7. | **¿Qué comodidades y espacios comunes incluye el proyecto?**<br>Departamentos 2D2B con terraza y vista a la cordillera. El edificio cuenta con quincho para celebraciones familiares, bicicletero, conserjería 24/7 con control de acceso y estacionamientos y bodegas. |
 | **6. Estacionamiento y bodega** | Sí. Todas las unidades incluyen 1 estacionamiento y 1 bodega dentro del precio desde 3.721 UF... | **¿Cada departamento incluye estacionamiento y bodega?**<br>Sí, todas las unidades incluyen 1 estacionamiento y 1 bodega propia dentro del valor desde 3.721 UF, resolviendo las necesidades de tu vehículo y almacenaje sin cobros sorpresa. |
@@ -176,12 +176,12 @@
 | Componente | Landing Inversionista (Base) | Versión Definitiva Familia (Optimizada) | Caracteres |
 | :--- | :--- | :--- | :--- |
 | **Título Sección (H2)** | **INVIERTE** en un proyecto con respaldo y proyección | Más espacio para **CRECER**, más vistas para **SOÑAR** | 50 chars *(vs 53)* |
-| **Bajada** | Departamentos 2D2B en La Florida, con vista a la cordillera. Entrega inmediata. | **Departamentos 2D2B en La Florida, con vista a la cordillera y entrega inmediata para mudarte hoy.** | 97 chars *(vs 83)* |
+| **Bajada** | Departamentos 2D2B en La Florida, con vista a la cordillera. | **Departamentos 2D2B en La Florida, con vista a la cordillera.** | 60 chars *(Exacto)* |
 | **Botón de Acción** | Quiero mi cotización | **Quiero mi cotización** | 20 chars *(Exacto)* |
 
 ---
 
 ## 12. FOOTER (`.site-footer`)
 
-* **Comportamiento en la web:** Fondo blanco + logos Alto Zañartu, Constructora Vector y OneKey + contacto Victoria Palma + titular monumental `ALTO ZAÑARTU` + barra de copyright.
+* **Comportamiento en la web:** Fondo blanco + logos Alto Zañartu, Constructora Vector y OneKey + contacto Rodrígo Callejón (`ventas@onekeybroker.com`, sin teléfono) + titular monumental `ALTO ZAÑARTU` + barra de copyright.
 * **Estado:** Se mantiene **100% idéntico** al actual.
