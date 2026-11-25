@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Tour Alto Zañartu — De tu casa a tu nuevo hogar</title>
+
+  <!-- Google Fonts Fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400..700;1,400&family=Work+Sans:wght@400..700&display=swap">
+
+  <style>
+    /* Fuentes locales de marca */
+    @font-face {
+      font-family: 'Work Sans';
+      src: url('../fuentes/Work_Sans/WorkSans-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('../fuentes/Roboto condensada/Roboto_Condensed-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('../fuentes/Roboto condensada/Roboto_Condensed-Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('../fuentes/Roboto condensada/Roboto_Condensed-SemiBold.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('../fuentes/Roboto condensada/Roboto_Condensed-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --brand-yellow: #E29E05;
+      --brand-yellow-hover: #e5b75c;
+      --brand-ink: #000000;
+      --brand-gray: #666666;
+      --brand-surface: #EFEFEF;
+      --brand-white: #FFFFFF;
+      --radius-pill: 999px;
+      --radius-card: 22px;
+      --radius-input: 12px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--brand-surface);
+      color: var(--brand-ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .section-copy {
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    .section-title {
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    /* ==========================================================
+       HERO CON FONDO render_3.jpg + BLUR INFERIOR + FORMULARIO
+       ========================================================== */
+    .oh-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      background-color: var(--brand-surface);
+      background-image: url('../media/carrusel/render_3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: clamp(48px, 6vw, 84px) clamp(20px, 5vw, 64px) clamp(56px, 7vw, 96px);
+      overflow: clip;
+      isolation: isolate;
+    }
+
+    /* Fade claro localizado extendido para máxima legibilidad */
+    .oh-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          95% 115% at 0% 50%,
+          rgba(239, 239, 239, 0.98) 0%,
+          rgba(239, 239, 239, 0.92) 34%,
+          rgba(239, 239, 239, 0.58) 54%,
+          rgba(239, 239, 239, 0) 74%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.96) 0%,
+          rgba(239, 239, 239, 0.88) 38%,
+          rgba(239, 239, 239, 0.42) 56%,
+          rgba(239, 239, 239, 0) 72%
+        );
+    }
+
+    /* Efecto blur únicamente en la parte baja de la imagen */
+    .oh-hero::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      inset-block-end: 0;
+      height: clamp(140px, 24vh, 260px);
+      z-index: 1;
+      pointer-events: none;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(239, 239, 239, 0) 0%,
+        rgba(239, 239, 239, 0.65) 100%
+      );
+      mask-image: linear-gradient(to bottom, transparent 0%, black 75%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 75%);
+    }
+
+    .oh-hero-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1380px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, 1.2fr) minmax(300px, 430px);
+      gap: clamp(32px, 5vw, 72px);
+      align-items: start;
+    }
+
+    .oh-hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .oh-hero-intro {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .oh-eyebrow {
+      display: inline-block;
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(0.95rem, 1.25vw, 1.125rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brand-ink);
+      margin-bottom: 16px;
+    }
+
+    .oh-title {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+      margin-bottom: 20px;
+      max-width: 16ch;
+    }
+
+    .oh-title-accent {
+      color: var(--brand-yellow);
+    }
+
+    .oh-lead {
+      font-size: clamp(1rem, 1.15vw, 1.125rem);
+      font-weight: 500;
+      line-height: 1.62;
+      color: var(--brand-ink);
+      max-width: 34ch;
+    }
+
+    /* ==========================================================
+       SECCIÓN BENEFICIOS (Fondo amarillo principal #E29E05)
+       ========================================================== */
+    .benefits-section {
+      background-color: var(--brand-yellow);
+      color: var(--brand-ink);
+      padding-block: clamp(64px, 8vw, 108px);
+      padding-inline: clamp(20px, 5vw, 48px);
+    }
+
+    .benefits-container {
+      max-inline-size: 1344px;
+      margin-inline: auto;
+    }
+
+    .benefits-header {
+      margin-block-end: clamp(40px, 5vw, 56px);
+    }
+
+    .benefits-title {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--brand-ink);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      list-style: none;
+    }
+
+    .benefit-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-inline-end: 32px;
+    }
+
+    .benefit-item + .benefit-item {
+      border-inline-start: 1px solid rgba(0, 0, 0, 0.08);
+      padding-inline-start: 36px;
+    }
+
+    .benefit-item:last-child {
+      padding-inline-end: 0;
+    }
+
+    .benefit-icon-circle {
+      inline-size: 56px;
+      block-size: 56px;
+      border-radius: var(--radius-pill);
+      background-color: rgba(255, 255, 255, 0.45);
+      display: grid;
+      place-items: center;
+      margin-block-end: 22px;
+      color: var(--brand-ink);
+      flex-shrink: 0;
+    }
+
+    .benefit-icon-circle svg {
+      inline-size: 26px;
+      block-size: 26px;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .benefit-heading {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--brand-ink);
+      margin-block-end: 10px;
+    }
+
+    .benefit-text {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(0, 0, 0, 0.82);
+      max-inline-size: 30ch;
+    }
+
+    .benefits-cta-wrap {
+      margin-block-start: clamp(36px, 5vw, 52px);
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .benefits-cta-btn {
+      display: inline-block;
+      background-color: var(--brand-ink);
+      color: var(--brand-white) !important;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .benefits-cta-btn:hover,
+    .benefits-cta-btn:active,
+    .benefits-cta-btn:focus,
+    .benefits-cta-btn:visited {
+      background-color: #262626;
+      color: var(--brand-white) !important;
+    }
+
+    .benefits-cta-btn:focus-visible {
+      outline: 2px solid var(--brand-ink);
+      outline-offset: 2px;
+    }
+
+    /* ==========================================================
+       TARJETA DE FORMULARIO
+       ========================================================== */
+    .hero-form-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius-card);
+      padding: clamp(22px, 3vw, 30px);
+      position: sticky;
+      top: 32px;
+    }
+
+    .hero-form-heading {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--brand-ink);
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .hero-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 10px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-field.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-field label {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--brand-ink);
+      letter-spacing: 0.01em;
+    }
+
+    .form-field input,
+    .form-field select {
+      width: 100%;
+      padding: 10px 12px;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--brand-ink);
+      background-color: var(--brand-white);
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-radius: var(--radius-input);
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .form-field select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 34px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 13px;
+      cursor: pointer;
+    }
+
+    .form-field select:invalid {
+      color: var(--brand-gray);
+    }
+
+    .form-field select option {
+      color: var(--brand-ink);
+      background-color: var(--brand-white);
+    }
+
+    .form-field input::placeholder {
+      color: var(--brand-gray);
+      opacity: 0.75;
+    }
+
+    .form-field input:focus-visible,
+    .form-field select:focus-visible {
+      outline: 2px solid var(--brand-yellow);
+      outline-offset: 1px;
+      border-color: var(--brand-ink);
+    }
+
+    .hero-submit-btn {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+      width: 100%;
+      background-color: var(--brand-yellow);
+      color: var(--brand-ink);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 14px 22px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .hero-submit-btn:hover {
+      background-color: var(--brand-yellow-hover);
+    }
+
+    .hero-submit-btn:focus-visible {
+      outline: 2px solid var(--brand-ink);
+      outline-offset: 2px;
+    }
+
+    /* ==========================================================
+       FOOTER (Mismo Design System Alto Zañartu)
+       ========================================================== */
+    .site-footer {
+      position: relative;
+      inline-size: 100%;
+      background-color: var(--brand-white);
+      color: var(--brand-ink);
+      padding-block-start: clamp(56px, 7vw, 88px);
+      padding-block-end: clamp(28px, 4vw, 44px);
+      padding-inline: clamp(20px, 5vw, 72px);
+      border-block-start: 1px solid rgba(0, 0, 0, 0.08);
+      overflow-x: clip;
+    }
+
+    .footer-container {
+      max-inline-size: 1380px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-info-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 1.25fr) minmax(180px, 0.75fr) auto;
+      gap: clamp(28px, 4vw, 56px);
+      align-items: start;
+      padding-block-end: clamp(32px, 4vw, 48px);
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .footer-col-label {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-gray);
+    }
+
+    .footer-brand-pair {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo-az {
+      height: 36px !important;
+      width: auto !important;
+      max-width: 180px !important;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-logo-divider {
+      width: 1px;
+      height: 28px;
+      background-color: rgba(0, 0, 0, 0.18);
+      flex-shrink: 0;
+    }
+
+    .footer-logo-vector {
+      height: 28px !important;
+      width: auto !important;
+      max-width: 160px !important;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-logo-onekey {
+      height: 22px !important;
+      width: auto !important;
+      max-width: 150px !important;
+      object-fit: contain;
+      display: block;
+      align-self: flex-start;
+      object-position: left center;
+    }
+
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--brand-gray);
+    }
+
+    .footer-contact-list strong {
+      font-weight: 600;
+      color: var(--brand-ink);
+    }
+
+    .footer-contact-list a {
+      color: var(--brand-gray);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contact-list a:hover {
+      color: var(--brand-yellow);
+    }
+
+    .footer-back-top {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--brand-gray);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      justify-self: end;
+    }
+
+    .footer-back-top:hover {
+      color: var(--brand-ink);
+    }
+
+    .footer-wordmark-wrap {
+      container-type: inline-size;
+      inline-size: 100%;
+      padding-block: clamp(20px, 3vw, 36px) clamp(12px, 2vw, 24px);
+      overflow: hidden;
+    }
+
+    .footer-wordmark {
+      display: block;
+      inline-size: 100%;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 0.86;
+      letter-spacing: -0.03em;
+      text-align: center;
+      white-space: nowrap;
+      color: rgba(0, 0, 0, 0.1);
+      user-select: none;
+      font-size: clamp(3.6rem, 15.2vw, 13.5rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .footer-wordmark {
+        font-size: clamp(3.6rem, 16.2cqi, 14rem);
+      }
+    }
+
+    .footer-bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-block-start: 18px;
+      font-size: 0.82rem;
+      color: var(--brand-gray);
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .oh-hero::before {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.96) 0%,
+          rgba(239, 239, 239, 0.9) 38%,
+          rgba(239, 239, 239, 0.65) 65%,
+          rgba(239, 239, 239, 0.25) 100%
+        );
+      }
+
+      .oh-hero-container {
+        grid-template-columns: 1fr;
+      }
+
+      .oh-hero-intro {
+        text-align: center;
+        align-items: center;
+      }
+
+      .oh-title,
+      .oh-lead {
+        margin-inline: auto;
+      }
+
+      .hero-form-card {
+        position: static;
+        max-width: 520px;
+        margin-inline: auto;
+      }
+
+      .hero-form-heading {
+        text-align: center;
+      }
+
+      .benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 40px;
+      }
+
+      .benefit-item:nth-child(odd) {
+        border-inline-start: none;
+        padding-inline-start: 0;
+      }
+
+      .benefits-title {
+        text-align: center;
+      }
+
+      .benefits-cta-wrap {
+        justify-content: center;
+      }
+
+      .footer-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 32px;
+      }
+
+      .footer-back-top {
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .oh-hero {
+        padding: 36px 18px 48px;
+      }
+
+      .benefits-section {
+        padding-inline: 24px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+      }
+
+      .benefit-item,
+      .benefit-item + .benefit-item {
+        border-inline-start: none;
+        padding-inline: 0;
+      }
+
+      .benefit-item + .benefit-item {
+        border-block-start: 1px solid rgba(0, 0, 0, 0.08);
+        padding-block-start: 28px;
+      }
+
+      .benefit-text {
+        max-inline-size: 100%;
+      }
+
+      .benefits-cta-btn {
+        font-size: clamp(0.78rem, 3.6vw, 0.9375rem);
+        padding: 13px 20px;
+      }
+
+      .hero-form {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        padding-block: 48px 28px;
+        padding-inline: 18px;
+      }
+
+      .footer-info-grid {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+      }
+
+      .footer-wordmark {
+        font-size: clamp(2.8rem, 15.5vw, 5.5rem);
+      }
+
+      @supports (font-size: 1cqi) {
+        .footer-wordmark {
+          font-size: clamp(2.8rem, 16cqi, 5.5rem);
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="oh-hero section-copy" aria-label="Registro Open Tour Alto Zañartu">
+      <div class="oh-hero-container">
+        <div class="oh-hero-copy">
+          <div class="oh-hero-intro">
+            <span class="oh-eyebrow">Sábado 5 de diciembre · 11:30 a 16:00 hrs</span>
+            <h1 class="oh-title">¡<span class="oh-title-accent">OPEN TOUR</span>: DE TU CASA A TU NUEVO HOGAR!</h1>
+            <p class="oh-lead">
+              Te pasamos a buscar para recorrer Alto Zañartu, departamentos de 2D2B con vista a la cordillera en La Florida, en un tour personalizado a tu ritmo y con actividades para toda la familia.
+            </p>
+          </div>
+        </div>
+
+        <aside id="contacto" class="hero-form-card" aria-label="Formulario de registro Open Tour">
+          <h2 class="hero-form-heading">Regístrate aquí</h2>
+          <form class="hero-form" action="gracias.html" method="GET">
+            <div class="form-field">
+              <label for="nombre">Nombre:</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="given-name" required />
+            </div>
+
+            <div class="form-field">
+              <label for="telefono">Teléfono:</label>
+              <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="+56 9" required />
+            </div>
+
+            <div class="form-field">
+              <label for="correo">Correo:</label>
+              <input type="email" id="correo" name="correo" autocomplete="email" required />
+            </div>
+
+            <div class="form-field">
+              <label for="comuna">Comuna:</label>
+              <input type="text" id="comuna" name="comuna" autocomplete="address-level2" required />
+            </div>
+
+            <div class="form-field full-width">
+              <label for="renta">Renta:</label>
+              <select id="renta" name="renta" required>
+                <option value="" disabled selected>Selecciona un tramo</option>
+                <option value="Menos de $2.500.000">Menos de $2.500.000</option>
+                <option value="Entre $2.500.000 y $3.000.000 complementando renta">Entre $2.500.000 y $3.000.000 complementando renta</option>
+                <option value="Entre $3.000.000 y $4.000.000">Entre $3.000.000 y $4.000.000</option>
+                <option value="Entre $4.000.000 y $5.000.000">Entre $4.000.000 y $5.000.000</option>
+                <option value="Más de $5.000.000">Más de $5.000.000</option>
+              </select>
+            </div>
+
+            <button type="submit" class="hero-submit-btn">¡Quiero conocer mi próximo hogar!</button>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section id="beneficios" class="benefits-section section-copy" aria-labelledby="benefits-heading">
+      <div class="benefits-container">
+        <header class="benefits-header">
+          <h2 id="benefits-heading" class="section-title benefits-title">
+            ¡NO HAY EXCUSA PARA CONOCER TU NUEVO HOGAR!
+          </h2>
+        </header>
+
+        <ul class="benefits-grid">
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 21s-6.5-5.8-6.5-11.2a6.5 6.5 0 1 1 13 0C18.5 15.2 12 21 12 21Z" />
+                <circle cx="12" cy="9.8" r="2.3" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Te buscamos y te dejamos en casa</h3>
+            <p class="benefit-text">
+              Tú nos dices dónde y nosotros te buscamos y te dejamos.
+            </p>
+          </li>
+
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 20.5s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10.5c0 5.5-7 10-7 10Z" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Ven con los que más quieres</h3>
+            <p class="benefit-text">
+              Preparamos zona de juegos, cabritas y algo fresco para el calor y además pet friendly 🐾
+            </p>
+          </li>
+
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 10.5 12 3l9 7.5" />
+                <path d="M5.5 9.5V20h13V9.5" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Recorrido 360%</h3>
+            <p class="benefit-text">
+              Por amplios departamentos de 2 dormitorios y 2 baños en La Florida y terminaciones boutique.
+            </p>
+          </li>
+
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M6.5 4h11l3.5 5.5L12 20 3 9.5 6.5 4Z" />
+                <path d="M3 9.5h18" />
+                <path d="M12 20L8.5 9.5 10.5 4" />
+                <path d="M12 20l3.5-10.5L13.5 4" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Beneficio exclusivo Open House</h3>
+            <p class="benefit-text">
+              Desde 3.699 UF. Y si estás entre los 5 primeros en reservar, te llevas estacionamiento y bodega incluido en el precio.
+            </p>
+          </li>
+        </ul>
+
+        <div class="benefits-cta-wrap">
+          <a href="#contacto" class="benefits-cta-btn">¡Quiero conocer mi próximo hogar!</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-copy">
+    <div class="footer-container">
+      <div class="footer-info-grid">
+        <div class="footer-col">
+          <span class="footer-col-label">Proyecto y Respaldo</span>
+          <div class="footer-brand-pair">
+            <img
+              src="../assets/logos/logotipo.svg"
+              alt="Alto Zañartu"
+              class="footer-logo-az"
+              loading="lazy"
+            />
+            <span class="footer-logo-divider" aria-hidden="true"></span>
+            <img
+              src="../media/logo%20vector%20.svg"
+              alt="Constructora Vector"
+              class="footer-logo-vector"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-label">Comercializa</span>
+          <img
+            src="../media/logo%20onekey.svg"
+            alt="OneKey"
+            class="footer-logo-onekey"
+            loading="lazy"
+          />
+        </div>
+
+        <a href="#" class="footer-back-top">Volver arriba</a>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 Constructora Vector. Todos los derechos reservados</span>
+        <span>Corregidor Zañartu 11544, La Florida</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

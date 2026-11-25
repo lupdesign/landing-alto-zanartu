@@ -1,0 +1,143 @@
+{
+  "version": "0.4",
+  "title": "Open House Alto Zañartu — Gracias",
+  "type": "page",
+  "content": [
+    {
+      "id": "ohgraroot01",
+      "elType": "container",
+      "settings": {
+        "container_type": "flex",
+        "flex_direction": "column",
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#EFEFEF",
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": true
+        },
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": true
+        },
+        "flex_gap": {
+          "unit": "px",
+          "size": 0,
+          "column": "0",
+          "row": "0",
+          "isLinked": true
+        }
+      },
+      "elements": [
+        {
+          "id": "ohgrahero01",
+          "elType": "container",
+          "settings": {
+            "container_type": "flex",
+            "flex_direction": "column",
+            "content_width": "boxed",
+            "width": {
+              "unit": "px",
+              "size": 780
+            },
+            "align_items": "center",
+            "justify_content": "center",
+            "min_height": {
+              "unit": "vh",
+              "size": 100
+            },
+            "padding": {
+              "unit": "px",
+              "top": "84",
+              "right": "20",
+              "bottom": "84",
+              "left": "20",
+              "isLinked": false
+            },
+            "flex_gap": {
+              "unit": "px",
+              "size": 28,
+              "column": "28",
+              "row": "28",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "ohgrahead01",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<style>\n    /* Fuentes locales de marca */\n    @font-face {\n      font-family: 'Work Sans';\n      src: url('https://lupdesign.github.io/landing-alto-zanartu/fuentes/Work_Sans/WorkSans-VariableFont_wght.ttf') format('truetype');\n      font-weight: 100 900;\n      font-style: normal;\n      font-display: swap;\n    }\n\n    @font-face {\n      font-family: 'Roboto Condensed';\n      src: url('https://lupdesign.github.io/landing-alto-zanartu/fuentes/Roboto%20condensada/Roboto_Condensed-Regular.ttf') format('truetype');\n      font-weight: 400;\n      font-style: normal;\n      font-display: swap;\n    }\n\n    @font-face {\n      font-family: 'Roboto Condensed';\n      src: url('https://lupdesign.github.io/landing-alto-zanartu/fuentes/Roboto%20condensada/Roboto_Condensed-Medium.ttf') format('truetype');\n      font-weight: 500;\n      font-style: normal;\n      font-display: swap;\n    }\n\n    @font-face {\n      font-family: 'Roboto Condensed';\n      src: url('https://lupdesign.github.io/landing-alto-zanartu/fuentes/Roboto%20condensada/Roboto_Condensed-SemiBold.ttf') format('truetype');\n      font-weight: 600;\n      font-style: normal;\n      font-display: swap;\n    }\n\n    @font-face {\n      font-family: 'Roboto Condensed';\n      src: url('https://lupdesign.github.io/landing-alto-zanartu/fuentes/Roboto%20condensada/Roboto_Condensed-Bold.ttf') format('truetype');\n      font-weight: 700;\n      font-style: normal;\n      font-display: swap;\n    }\n\n    :root {\n      --brand-yellow: #E29E05;\n      --brand-yellow-hover: #e5b75c;\n      --brand-ink: #000000;\n      --brand-gray: #666666;\n      --brand-surface: #EFEFEF;\n      --brand-white: #FFFFFF;\n      --radius-pill: 999px;\n      --radius-card: 22px;\n      --radius-input: 12px;\n    }\n\n    *, *::before, *::after {\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0;\n    }\n\n    html {\n      scroll-behavior: smooth;\n    }\n\n    html, body {\n      width: 100%;\n      min-height: 100%;\n      background-color: var(--brand-surface);\n      color: var(--brand-ink);\n      -webkit-font-smoothing: antialiased;\n      -moz-osx-font-smoothing: grayscale;\n    }\n\n    .section-copy {\n      font-family: 'Work Sans', sans-serif;\n    }\n\n    .section-title {\n      font-family: 'Roboto Condensed', sans-serif;\n    }\n\n    /* ==========================================================\n       HERO GRACIAS (Solo texto + botón)\n       ========================================================== */\n    .thanks-hero {\n      width: 100%;\n      min-height: 100vh;\n      min-height: 100dvh;\n      background-color: var(--brand-surface);\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      padding: clamp(64px, 9vw, 112px) clamp(20px, 5vw, 64px);\n      text-align: center;\n    }\n\n    .thanks-container {\n      max-width: 780px;\n      margin: 0 auto;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n    }\n\n    .thanks-eyebrow {\n      display: inline-block;\n      font-family: 'Work Sans', sans-serif;\n      font-size: clamp(0.95rem, 1.25vw, 1.125rem);\n      font-weight: 700;\n      letter-spacing: 0.1em;\n      text-transform: uppercase;\n      color: var(--brand-ink);\n      margin-bottom: 16px;\n    }\n\n    .thanks-title {\n      font-family: 'Roboto Condensed', sans-serif;\n      font-size: clamp(2.35rem, 4.4vw, 3.75rem);\n      font-weight: 700;\n      line-height: 1.04;\n      letter-spacing: -0.015em;\n      color: var(--brand-ink);\n      margin-bottom: 28px;\n    }\n\n    .thanks-btn {\n      display: inline-block;\n      background-color: var(--brand-yellow);\n      color: var(--brand-ink);\n      font-family: 'Work Sans', sans-serif;\n      font-size: 0.9375rem;\n      font-weight: 600;\n      letter-spacing: 0.02em;\n      text-decoration: none;\n      padding: 15px 34px;\n      border-radius: var(--radius-pill);\n      transition: background-color 0.2s ease;\n      margin-bottom: 28px;\n    }\n\n    .thanks-btn:hover {\n      background-color: var(--brand-yellow-hover);\n    }\n\n    .thanks-btn:focus-visible {\n      outline: 2px solid var(--brand-ink);\n      outline-offset: 2px;\n    }\n\n    .thanks-lead {\n      font-size: clamp(1rem, 1.15vw, 1.125rem);\n      font-weight: 400;\n      line-height: 1.65;\n      color: var(--brand-ink);\n      max-width: 56ch;\n      margin-bottom: 18px;\n    }\n\n    .thanks-closing {\n      font-family: 'Roboto Condensed', sans-serif;\n      font-size: clamp(1.35rem, 2vw, 1.75rem);\n      font-weight: 700;\n      color: var(--brand-ink);\n    }\n\n    /* ==========================================================\n       FOOTER (Mismo Design System Alto Zañartu)\n       ========================================================== */\n    .site-footer {\n      position: relative;\n      inline-size: 100%;\n      background-color: var(--brand-white);\n      color: var(--brand-ink);\n      padding-block-start: clamp(56px, 7vw, 88px);\n      padding-block-end: clamp(28px, 4vw, 44px);\n      padding-inline: clamp(20px, 5vw, 72px);\n      border-block-start: 1px solid rgba(0, 0, 0, 0.08);\n      overflow-x: clip;\n    }\n\n    .footer-container {\n      max-inline-size: 1380px;\n      margin-inline: auto;\n      display: flex;\n      flex-direction: column;\n    }\n\n    .footer-info-grid {\n      display: grid;\n      grid-template-columns: minmax(280px, 1.25fr) minmax(180px, 0.75fr) auto;\n      gap: clamp(28px, 4vw, 56px);\n      align-items: start;\n      padding-block-end: clamp(32px, 4vw, 48px);\n    }\n\n    .footer-col {\n      display: flex;\n      flex-direction: column;\n      align-items: flex-start;\n      gap: 24px;\n    }\n\n    .footer-col-label {\n      font-family: 'Work Sans', sans-serif;\n      font-size: 0.78rem;\n      font-weight: 500;\n      letter-spacing: 0.06em;\n      text-transform: uppercase;\n      color: var(--brand-gray);\n    }\n\n    .footer-brand-pair {\n      display: flex;\n      align-items: center;\n      gap: 22px;\n      flex-wrap: wrap;\n    }\n\n    .footer-logo-az {\n      height: 36px !important;\n      width: auto !important;\n      max-width: 180px !important;\n      object-fit: contain;\n      display: block;\n    }\n\n    .footer-logo-divider {\n      width: 1px;\n      height: 28px;\n      background-color: rgba(0, 0, 0, 0.18);\n      flex-shrink: 0;\n    }\n\n    .footer-logo-vector {\n      height: 28px !important;\n      width: auto !important;\n      max-width: 160px !important;\n      object-fit: contain;\n      display: block;\n    }\n\n    .footer-logo-onekey {\n      height: 22px !important;\n      width: auto !important;\n      max-width: 150px !important;\n      object-fit: contain;\n      display: block;\n      align-self: flex-start;\n      object-position: left center;\n    }\n\n    .footer-contact-list {\n      list-style: none;\n      display: flex;\n      flex-direction: column;\n      gap: 6px;\n      font-size: 0.92rem;\n      line-height: 1.5;\n      color: var(--brand-gray);\n    }\n\n    .footer-contact-list strong {\n      font-weight: 600;\n      color: var(--brand-ink);\n    }\n\n    .footer-contact-list a {\n      color: var(--brand-gray);\n      text-decoration: none;\n      transition: color 0.2s ease;\n    }\n\n    .footer-contact-list a:hover {\n      color: var(--brand-yellow);\n    }\n\n    .footer-back-top {\n      font-size: 0.85rem;\n      font-weight: 500;\n      color: var(--brand-gray);\n      text-decoration: none;\n      transition: color 0.2s ease;\n      justify-self: end;\n    }\n\n    .footer-back-top:hover {\n      color: var(--brand-ink);\n    }\n\n    .footer-wordmark-wrap {\n      container-type: inline-size;\n      inline-size: 100%;\n      padding-block: clamp(20px, 3vw, 36px) clamp(12px, 2vw, 24px);\n      overflow: hidden;\n    }\n\n    .footer-wordmark {\n      display: block;\n      inline-size: 100%;\n      font-family: 'Roboto Condensed', sans-serif;\n      font-weight: 700;\n      text-transform: uppercase;\n      line-height: 0.86;\n      letter-spacing: -0.03em;\n      text-align: center;\n      white-space: nowrap;\n      color: rgba(0, 0, 0, 0.1);\n      user-select: none;\n      font-size: clamp(3.6rem, 15.2vw, 13.5rem);\n    }\n\n    @supports (font-size: 1cqi) {\n      .footer-wordmark {\n        font-size: clamp(3.6rem, 16.2cqi, 14rem);\n      }\n    }\n\n    .footer-bottom-bar {\n      display: flex;\n      align-items: center;\n      justify-content: space-between;\n      gap: 16px;\n      padding-block-start: 18px;\n      font-size: 0.82rem;\n      color: var(--brand-gray);\n      flex-wrap: wrap;\n    }\n\n    @media (max-width: 1024px) {\n      .footer-info-grid {\n        grid-template-columns: repeat(2, minmax(0, 1fr));\n        row-gap: 32px;\n      }\n\n      .footer-back-top {\n        justify-self: start;\n      }\n    }\n\n    @media (max-width: 600px) {\n      .thanks-hero {\n        padding: 48px 18px;\n      }\n\n      .site-footer {\n        padding-block: 48px 28px;\n        padding-inline: 18px;\n      }\n\n      .footer-info-grid {\n        grid-template-columns: 1fr;\n        row-gap: 28px;\n      }\n\n      .footer-wordmark {\n        font-size: clamp(2.8rem, 15.5vw, 5.5rem);\n      }\n\n      @supports (font-size: 1cqi) {\n        .footer-wordmark {\n          font-size: clamp(2.8rem, 16cqi, 5.5rem);\n        }\n      }\n    }\n  </style>\n<div class=\"thanks-container\" style=\"text-align: center;\">\n  <span class=\"thanks-eyebrow\">Alto Zañartu · Open Tour · Sábado 5 de diciembre</span>\n  <h1 class=\"thanks-title\" style=\"margin-bottom: 0;\">¡TE FALTA SOLO UN PASO PARA CONFIRMAR TU REGISTRO!</h1>\n</div>"
+              }
+            },
+            {
+              "id": "ohgrabtn01",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "HABLAR CON EJECUTIVO",
+                "align": "center",
+                "link": {
+                  "url": "https://wa.me/56900000000?text=Hola%2C%20me%20registr%C3%A9%20al%20Open%20Tour%20de%20Alto%20Za%C3%B1artu%20y%20quiero%20coordinar%20mi%20visita.",
+                  "is_external": "on",
+                  "nofollow": ""
+                },
+                "background_color": "#E29E05",
+                "button_text_color": "#000000",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "999",
+                  "right": "999",
+                  "bottom": "999",
+                  "left": "999",
+                  "isLinked": true
+                },
+                "text_padding": {
+                  "unit": "px",
+                  "top": "15",
+                  "right": "34",
+                  "bottom": "15",
+                  "left": "34",
+                  "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Work Sans",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 15
+                },
+                "typography_font_weight": "600",
+                "custom_css": "selector .elementor-button:hover {\n  background-color: #e5b75c !important;\n  color: #000000 !important;\n}"
+              }
+            },
+            {
+              "id": "ohgrabody01",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"thanks-container section-copy\" style=\"text-align: center;\">\n  <p class=\"thanks-lead\">\n    Escríbele a nuestra ejecutiva para coordinar la hora y la dirección donde te pasamos a buscar el sábado 5 de diciembre. También puede responder todas tus dudas sobre Alto Zañartu antes de la visita.\n  </p>\n  <p class=\"thanks-closing\">¡Nos vemos pronto!</p>\n</div>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ohgrafoot01",
+          "elType": "widget",
+          "widgetType": "html",
+          "settings": {
+            "html": "<footer class=\"site-footer section-copy\">\n    <div class=\"footer-container\">\n      <div class=\"footer-info-grid\">\n        <div class=\"footer-col\">\n          <span class=\"footer-col-label\">Proyecto y Respaldo</span>\n          <div class=\"footer-brand-pair\">\n            <img\n              src=\"https://lupdesign.github.io/landing-alto-zanartu/assets/logos/logotipo.svg\"\n              alt=\"Alto Zañartu\"\n              class=\"footer-logo-az\"\n              loading=\"lazy\"\n            />\n            <span class=\"footer-logo-divider\" aria-hidden=\"true\"></span>\n            <img\n              src=\"https://lupdesign.github.io/landing-alto-zanartu/media/logo%20vector%20.svg\"\n              alt=\"Constructora Vector\"\n              class=\"footer-logo-vector\"\n              loading=\"lazy\"\n            />\n          </div>\n        </div>\n\n        <div class=\"footer-col\">\n          <span class=\"footer-col-label\">Comercializa</span>\n          <img\n            src=\"https://lupdesign.github.io/landing-alto-zanartu/media/logo%20onekey.svg\"\n            alt=\"OneKey\"\n            class=\"footer-logo-onekey\"\n            loading=\"lazy\"\n          />\n        </div>\n\n        <a href=\"#\" class=\"footer-back-top\">Volver arriba</a>\n      </div>\n\n      <div class=\"footer-bottom-bar\">\n        <span>© 2026 Constructora Vector. Todos los derechos reservados</span>\n        <span>Corregidor Zañartu 11544, La Florida</span>\n      </div>\n    </div>\n  </footer>"
+          }
+        }
+      ]
+    }
+  ]
+}
