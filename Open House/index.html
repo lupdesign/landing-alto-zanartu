@@ -242,7 +242,7 @@
 
     .benefits-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       list-style: none;
     }
 
@@ -250,12 +250,12 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding-inline-end: 32px;
+      padding-inline-end: 22px;
     }
 
     .benefit-item + .benefit-item {
       border-inline-start: 1px solid rgba(0, 0, 0, 0.08);
-      padding-inline-start: 36px;
+      padding-inline-start: 24px;
     }
 
     .benefit-item:last-child {
@@ -750,7 +750,7 @@
             <span class="oh-eyebrow">Sábado 5 de diciembre · 11:30 a 16:00 hrs</span>
             <h1 class="oh-title">¡<span class="oh-title-accent">OPEN TOUR</span>: DE TU CASA A TU NUEVO HOGAR!</h1>
             <p class="oh-lead">
-              Te pasamos a buscar para recorrer Alto Zañartu, departamentos de 2D2B con vista a la cordillera en La Florida, en un tour personalizado a tu ritmo y con actividades para toda la familia.
+              Te buscamos en la puerta de tu casa, te mostramos Alto zañartu en un tour personalizado con actividades para toda la familia, accedes a beneficios exclusivos y te dejamos de vuelta en tu casa.
             </p>
           </div>
         </div>
@@ -774,8 +774,62 @@
             </div>
 
             <div class="form-field">
-              <label for="comuna">Comuna:</label>
-              <input type="text" id="comuna" name="comuna" autocomplete="address-level2" required />
+              <label for="comuna">Comuna donde vives:</label>
+              <select id="comuna" name="comuna" required>
+                <option value="" disabled selected>Selecciona tu comuna</option>
+                <option value="Alhué">Alhué</option>
+                <option value="Buin">Buin</option>
+                <option value="Calera de Tango">Calera de Tango</option>
+                <option value="Cerrillos">Cerrillos</option>
+                <option value="Cerro Navia">Cerro Navia</option>
+                <option value="Colina">Colina</option>
+                <option value="Conchalí">Conchalí</option>
+                <option value="Curacaví">Curacaví</option>
+                <option value="El Bosque">El Bosque</option>
+                <option value="El Monte">El Monte</option>
+                <option value="Estación Central">Estación Central</option>
+                <option value="Huechuraba">Huechuraba</option>
+                <option value="Independencia">Independencia</option>
+                <option value="Isla de Maipo">Isla de Maipo</option>
+                <option value="La Cisterna">La Cisterna</option>
+                <option value="La Florida">La Florida</option>
+                <option value="La Granja">La Granja</option>
+                <option value="La Pintana">La Pintana</option>
+                <option value="La Reina">La Reina</option>
+                <option value="Lampa">Lampa</option>
+                <option value="Las Condes">Las Condes</option>
+                <option value="Lo Barnechea">Lo Barnechea</option>
+                <option value="Lo Espejo">Lo Espejo</option>
+                <option value="Lo Prado">Lo Prado</option>
+                <option value="Macul">Macul</option>
+                <option value="Maipú">Maipú</option>
+                <option value="María Pinto">María Pinto</option>
+                <option value="Melipilla">Melipilla</option>
+                <option value="Ñuñoa">Ñuñoa</option>
+                <option value="Padre Hurtado">Padre Hurtado</option>
+                <option value="Paine">Paine</option>
+                <option value="Pedro Aguirre Cerda">Pedro Aguirre Cerda</option>
+                <option value="Peñaflor">Peñaflor</option>
+                <option value="Peñalolén">Peñalolén</option>
+                <option value="Pirque">Pirque</option>
+                <option value="Providencia">Providencia</option>
+                <option value="Pudahuel">Pudahuel</option>
+                <option value="Puente Alto">Puente Alto</option>
+                <option value="Quilicura">Quilicura</option>
+                <option value="Quinta Normal">Quinta Normal</option>
+                <option value="Recoleta">Recoleta</option>
+                <option value="Renca">Renca</option>
+                <option value="San Bernardo">San Bernardo</option>
+                <option value="San Joaquín">San Joaquín</option>
+                <option value="San José de Maipo">San José de Maipo</option>
+                <option value="San Miguel">San Miguel</option>
+                <option value="San Pedro">San Pedro</option>
+                <option value="San Ramón">San Ramón</option>
+                <option value="Santiago">Santiago</option>
+                <option value="Talagante">Talagante</option>
+                <option value="Tiltil">Tiltil</option>
+                <option value="Vitacura">Vitacura</option>
+              </select>
             </div>
 
             <div class="form-field full-width">
@@ -814,7 +868,7 @@
             </div>
             <h3 class="benefit-heading">Te buscamos y te dejamos en casa</h3>
             <p class="benefit-text">
-              Tú nos dices dónde y nosotros te buscamos y te dejamos.
+              Tú nos dices donde y nosotros te buscamos y te dejamos.
             </p>
           </li>
 
@@ -826,7 +880,7 @@
             </div>
             <h3 class="benefit-heading">Ven con los que más quieres</h3>
             <p class="benefit-text">
-              Preparamos zona de juegos, cabritas y algo fresco para el calor y además pet friendly 🐾
+              Preparamos zona de juegos, cabritas y algo fresco para el calor y además pet friendly.
             </p>
           </li>
 
@@ -854,7 +908,20 @@
             </div>
             <h3 class="benefit-heading">Beneficio exclusivo Open House</h3>
             <p class="benefit-text">
-              Desde 3.699 UF. Y si estás entre los 5 primeros en reservar, te llevas estacionamiento y bodega incluido en el precio.
+              Desde 3.699 UF con estacionamiento y bodega incluido, hasta 36 cuotas para el pie y regalos extras.
+            </p>
+          </li>
+
+          <li class="benefit-item">
+            <div class="benefit-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 17l5.5-5.5 4 4L20 9" />
+                <path d="M15 9h5v5" />
+              </svg>
+            </div>
+            <h3 class="benefit-heading">Para vivir o invertir</h3>
+            <p class="benefit-text">
+              Un hogar para vivir ampliamente con tu familia o una inversión con conectividad y proyección en la Florida.
             </p>
           </li>
         </ul>
